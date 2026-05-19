@@ -37,23 +37,19 @@
             --warm: #1A1816;
         }
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: var(--font-sans);
             font-size: 15px;
-            line-height: 1.6;
+            line-height: 1.65;
             color: var(--text-primary);
             background: var(--bg-base);
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-            transition: background 0.4s ease;
+            transition: background 0.4s;
         }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
-        /* Sticky Navigation */
         header {
             position: sticky;
             top: 0;
@@ -63,277 +59,82 @@
             padding: 16px 0;
         }
 
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .nav { display: flex; justify-content: space-between; align-items: center; }
 
-        .logo {
-            font-weight: 700;
-            font-size: 1.15rem;
-            letter-spacing: -0.02em;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 28px;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover { color: var(--accent); }
+        .logo { font-weight: 700; font-size: 1.2rem; letter-spacing: -0.02em; }
 
         .theme-toggle {
             background: none;
             border: 1px solid var(--border);
-            color: var(--text-tertiary);
-            width: 42px;
-            height: 42px;
+            width: 42px; height: 42px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
             font-size: 18px;
-            transition: all 0.3s;
+            cursor: pointer;
         }
 
-        /* Hero */
-        .hero { padding: 100px 0 70px; }
-        .hero-eyebrow {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 16px;
-        }
+        .hero { padding: 120px 0 80px; text-align: center; }
         .hero h1 {
-            font-size: clamp(2.4rem, 7vw, 4.2rem);
+            font-size: clamp(2.6rem, 8vw, 4.5rem);
             font-weight: 700;
-            letter-spacing: -0.04em;
+            letter-spacing: -0.05em;
             line-height: 1.05;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
         .hero-subtitle {
             font-family: var(--font-serif);
-            font-size: clamp(1.05rem, 2.8vw, 1.35rem);
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            max-width: 720px;
+            margin: 0 auto 40px;
             color: var(--text-secondary);
-            max-width: 620px;
             font-style: italic;
         }
 
-        /* Sections */
-        .section { padding: 72px 0; }
+        .section { padding: 80px 0; }
         .section-title {
             font-family: var(--font-mono);
             font-size: 12px;
-            text-transform: uppercase;
             letter-spacing: 0.12em;
+            text-transform: uppercase;
             color: var(--accent);
-            margin-bottom: 36px;
-            padding-bottom: 12px;
+            margin-bottom: 40px;
             border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
         }
 
-        /* Scroll Animation */
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(40px);
             transition: all 0.9s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
 
-        /* Stats */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 32px;
-            padding: 48px 0;
-            border-bottom: 1px solid var(--border);
-        }
-        .stat { text-align: center; }
-        .stat-number {
-            font-family: var(--font-mono);
-            font-size: clamp(2.2rem, 6vw, 3rem);
-            font-weight: 700;
-            color: var(--accent);
-            line-height: 1;
-        }
-        .stat-label {
-            margin-top: 8px;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--text-tertiary);
-        }
-
-        /* Principles */
-        .principles-list {
-            list-style: none;
-            position: relative;
-            padding-left: 28px;
-        }
-        .principles-list::before {
-            content: '';
-            position: absolute;
-            left: 6px;
-            top: 10px;
-            bottom: 10px;
-            width: 1px;
-            background: var(--border);
-        }
-        .principles-list li {
-            position: relative;
-            margin-bottom: 28px;
-            padding-left: 20px;
-        }
-        .principles-list li::before {
-            content: '';
-            position: absolute;
-            left: -28px;
-            top: 9px;
-            width: 11px;
-            height: 11px;
-            border-radius: 50%;
-            background: var(--bg-base);
-            border: 2px solid var(--accent);
-        }
-        .principles-list li strong {
-            display: block;
-            font-size: 16px;
-            margin-bottom: 6px;
-        }
-        .principles-list li p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            max-width: 580px;
-        }
-
-        /* Skillbooks */
         .skillbooks-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 16px;
+            gap: 20px;
         }
         @media (min-width: 768px) {
             .skillbooks-grid { grid-template-columns: repeat(2, 1fr); }
         }
+
         .skillbook-card {
-            padding: 24px;
+            padding: 28px;
             background: var(--bg-raised);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            transition: all 0.3s ease;
+            border-radius: 14px;
+            transition: all 0.4s ease;
         }
         .skillbook-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px var(--accent-glow);
             border-color: var(--accent);
-            box-shadow: 0 10px 30px var(--accent-glow);
-            transform: translateY(-4px);
-        }
-        .skillbook-card h3 {
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        .skillbook-card p {
-            font-size: 13.5px;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-        .skillbook-tag {
-            display: inline-block;
-            margin-top: 12px;
-            font-family: var(--font-mono);
-            font-size: 10px;
-            padding: 4px 10px;
-            background: var(--accent-muted);
-            color: var(--accent);
-            border-radius: 4px;
-            letter-spacing: 0.04em;
         }
 
-        /* Systems Table */
-        .systems-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13.5px;
-        }
-        .systems-table th {
-            text-align: left;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--text-tertiary);
-            padding: 10px 12px;
-            border-bottom: 1px solid var(--border);
-        }
-        .systems-table td {
-            padding: 14px 12px;
-            border-bottom: 1px solid var(--border);
-            vertical-align: top;
-        }
-        .systems-table tr:hover td {
-            background: var(--accent-muted);
-        }
-
-        /* Quote */
-        .quote-section {
-            background: var(--warm);
-            margin: 0 -24px;
-            padding: 70px 24px;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-        .quote-text {
-            font-family: var(--font-serif);
-            font-size: clamp(1.15rem, 3.2vw, 1.55rem);
-            line-height: 1.55;
-            max-width: 680px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .quote-attr {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 12px;
-            color: var(--text-tertiary);
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-        }
-
-        /* Footer */
         .footer {
-            padding: 60px 0 40px;
+            padding: 80px 0 40px;
             text-align: center;
-            font-size: 13px;
             color: var(--text-tertiary);
-        }
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            margin-bottom: 20px;
-        }
-        .footer-links a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-        .footer-links a:hover { text-decoration: underline; }
-
-        @media (max-width: 640px) {
-            .hero { padding: 80px 0 50px; }
-            .nav-links { gap: 20px; font-size: 12.5px; }
+            font-size: 13px;
         }
     </style>
 </head>
@@ -342,12 +143,6 @@
 <header>
     <div class="container nav">
         <div class="logo">Haree Akkala</div>
-        <div class="nav-links">
-            <a href="#principles">Principles</a>
-            <a href="#skillbooks">Skillbooks</a>
-            <a href="#systems">Systems</a>
-            <a href="#vision">Vision</a>
-        </div>
         <button class="theme-toggle" id="themeToggle">☀️</button>
     </div>
 </header>
@@ -356,36 +151,28 @@
 
     <!-- HERO -->
     <section class="hero animate-on-scroll">
-        <div class="hero-eyebrow">AI Systems Architect • GenAI QA Engineering</div>
         <h1>Haree Akkala</h1>
         <p class="hero-subtitle">
-            Systems thinker who builds infrastructure where nothing existed.<br>
-            8 AI skillbooks. 14 operational systems. 9 teams. One engineer's instinct applied to quality at scale.
+            AI Systems Architect building intelligent infrastructure that scales from idea to production.<br>
+            I design autonomous systems, AI skillbooks, and end-to-end architectures for the next generation of intelligent products.
         </p>
-        <div style="margin-top:32px; display:flex; flex-wrap:wrap; gap:20px; font-size:13px; color:var(--text-tertiary);">
-            <span>Meta • Menlo Park, CA</span>
-            <span>Since Feb 2023</span>
-        </div>
     </section>
 
     <!-- STATS -->
-    <section class="stats animate-on-scroll">
-        <div class="stat"><div class="stat-number">8</div><div class="stat-label">AI Skillbooks</div></div>
-        <div class="stat"><div class="stat-number">14</div><div class="stat-label">Systems Built</div></div>
-        <div class="stat"><div class="stat-number">9</div><div class="stat-label">Teams Served</div></div>
-        <div class="stat"><div class="stat-number">2,700+</div><div class="stat-label">Test Cases</div></div>
-        <div class="stat"><div class="stat-number">51+</div><div class="stat-label">Tasks Managed</div></div>
+    <section class="stats animate-on-scroll" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:32px; padding:40px 0; border-bottom:1px solid var(--border);">
+        <div style="text-align:center;"><div style="font-size:3rem; font-weight:700; color:var(--accent);">8</div><div style="font-size:12px; text-transform:uppercase; letter-spacing:0.08em; margin-top:8px;">AI Skillbooks</div></div>
+        <div style="text-align:center;"><div style="font-size:3rem; font-weight:700; color:var(--accent);">14</div><div style="font-size:12px; text-transform:uppercase; letter-spacing:0.08em; margin-top:8px;">Systems Built</div></div>
+        <div style="text-align:center;"><div style="font-size:3rem; font-weight:700; color:var(--accent);">9</div><div style="font-size:12px; text-transform:uppercase; letter-spacing:0.08em; margin-top:8px;">Teams Led</div></div>
     </section>
 
     <!-- PRINCIPLES -->
     <section id="principles" class="section animate-on-scroll">
         <div class="section-title">Core Principles</div>
-        <ul class="principles-list">
-            <li><strong>Own the System, Not the Task</strong><p>Every piece of work reveals a systems builder. Spreadsheets become operational infrastructure. Skillbooks become interconnected ecosystems.</p></li>
-            <li><strong>Make Quality Visible</strong><p>Data-first communication. Quantified ROI. Turning invisible work into measurable outcomes decision-makers can't ignore.</p></li>
-            <li><strong>Anticipate, Don't React</strong><p>SEV prevention frameworks. Upstream QA. Test frameworks designed before products launch. 40% of work is self-initiated.</p></li>
-            <li><strong>Automate Everything Repeatable</strong><p>If it happens twice, build a system. AI-agent-enabled trackers, auto-compliance reporting, auto-generated status posts.</p></li>
-            <li><strong>Document for the Person After You</strong><p>Every system designed for team execution. Explicit runbooks. Knowledge transfers that outlast involvement.</p></li>
+        <ul style="list-style:none; padding-left:28px; position:relative;">
+            <li style="margin-bottom:28px; position:relative; padding-left:20px;"><strong>Own the System, Not the Task</strong><p style="color:var(--text-secondary);">Turn one-off work into lasting infrastructure.</p></li>
+            <li style="margin-bottom:28px; position:relative; padding-left:20px;"><strong>Make Intelligence Visible</strong><p style="color:var(--text-secondary);">Build systems that explain themselves and show clear value.</p></li>
+            <li style="margin-bottom:28px; position:relative; padding-left:20px;"><strong>Anticipate at Scale</strong><p style="color:var(--text-secondary);">Design architectures that prevent problems before they appear.</p></li>
+            <li style="margin-bottom:28px; position:relative; padding-left:20px;"><strong>Automate Everything Repeatable</strong><p style="color:var(--text-secondary);">If it happens twice, build an AI agent for it.</p></li>
         </ul>
     </section>
 
@@ -394,139 +181,61 @@
         <div class="section-title">AI Skillbook Ecosystem</div>
         <div class="skillbooks-grid">
             <div class="skillbook-card">
-                <h3>QA Compliance Report</h3>
-                <p>Configurable weekly bug tag compliance engine. Queries closed bugs, computes compliance across 4 categories, delivers to GChat.</p>
-                <span class="skillbook-tag">PRODUCTIZED</span>
-            </div>
-            <div class="skillbook-card">
-                <h3>Fix Rate Tracker</h3>
-                <p>Auto-tracks QA fix rates, scans comments, follows up with engineers via DMs and task comments, calculates impact.</p>
-                <span class="skillbook-tag">AUTOMATION</span>
-            </div>
-            <div class="skillbook-card">
-                <h3>MAIV2 Knowledge Base</h3>
-                <p>Auto-updating knowledge base for Meta AI Voice 2.0. Architecture, dogfooding, contacts, known issues, test plans.</p>
-                <span class="skillbook-tag">KNOWLEDGE</span>
-            </div>
-            <div class="skillbook-card">
-                <h3>MAIV2 Test Case Generator</h3>
-                <p>Pulls ALL project context and generates comprehensive test plans for Voice features in Google Sheets.</p>
-                <span class="skillbook-tag">GENERATION</span>
-            </div>
-            <div class="skillbook-card">
-                <h3>QA Bug Reproduction</h3>
-                <p>End-to-end bug repro: fetches details, provisions test accounts, attempts reproduction, generates structured reports.</p>
-                <span class="skillbook-tag">EXECUTION</span>
-            </div>
-            <div class="skillbook-card">
                 <h3>Daily Brief System</h3>
-                <p>Personalized daily briefing covering calendar, tasks, diffs, GChat, posts, thanks, and AI meeting notes.</p>
-                <span class="skillbook-tag">OPERATIONS</span>
-            </div>
-            <div class="skillbook-card">
-                <h3>GenAI QA Compliance Fixer</h3>
-                <p>Analyzes non-compliant bugs, infers missing tags using LLM analysis, auto-adds high-confidence tags.</p>
-                <span class="skillbook-tag">AI-NATIVE</span>
+                <p>Autonomous daily intelligence briefing — calendar, tasks, knowledge updates, and strategic insights.</p>
             </div>
             <div class="skillbook-card">
                 <h3>Writing Style Clone</h3>
-                <p>Exhaustively analyzed 1.3M characters across 1,001 items to create a personal ghostwriting system.</p>
-                <span class="skillbook-tag">PERSONAL AI</span>
+                <p>Personal AI ghostwriter trained on 1.3M+ characters of my own writing.</p>
+            </div>
+            <div class="skillbook-card">
+                <h3>Knowledge Base Engine</h3>
+                <p>Self-updating, interconnected knowledge systems for complex AI projects.</p>
+            </div>
+            <div class="skillbook-card">
+                <h3>Compliance & Quality Agent</h3>
+                <p>AI that continuously monitors and improves system quality autonomously.</p>
             </div>
         </div>
     </section>
 
-    <!-- OPERATIONAL SYSTEMS -->
-    <section id="systems" class="section animate-on-scroll">
-        <div class="section-title">Operational Systems Built from Zero</div>
-        <div style="overflow-x:auto;">
-            <table class="systems-table">
-                <thead>
-                    <tr>
-                        <th>System</th>
-                        <th>Scope</th>
-                        <th>Impact</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td><strong>RTAI Test Set Tracker</strong></td><td>AI-agent enabled, daily 5PM auto-monitoring</td><td>9+ columns auto-filled from MTT API</td></tr>
-                    <tr><td><strong>Release Cycle Reference</strong></td><td>Hierarchical Master → Platform → Detail</td><td>7+ surfaces coordinated</td></tr>
-                    <tr><td><strong>Bug Compliance Dashboard</strong></td><td>Cross-pillar tag compliance tracking</td><td>5 pillars, 4 compliance categories</td></tr>
-                    <tr><td><strong>i18n Test Framework</strong></td><td>26 languages across multiple surfaces</td><td>FB/IG/MSGR/WA/C50/Hatch/WWW</td></tr>
-                    <tr><td><strong>SEV Prevention Framework</strong></td><td>Proactive failure detection across 6 areas</td><td>Zero-to-one infrastructure</td></tr>
-                    <tr><td><strong>Offshore Coordination System</strong></td><td>TechM team task routing & tracking</td><td>9+ person team enabled</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- QUOTE -->
-    <section class="quote-section animate-on-scroll">
-        <p class="quote-text">"He doesn't solve problems — he builds systems that prevent problems from recurring. Every artifact he creates is part of a larger interconnected whole."</p>
-        <p class="quote-attr">From Deep Profile Analysis • May 2026</p>
-    </section>
-
     <!-- VISION -->
-    <section id="vision" class="section animate-on-scroll">
-        <div class="section-title">Current Direction</div>
-        <ul class="principles-list">
-            <li><strong>Applied AI for QA</strong><p>Replace ALL manual/non-AI QA infrastructure with AI-based equivalents. Measure: % of processes automated, time savings per sprint.</p></li>
-            <li><strong>10x-QA Platform Evolution</strong><p>Mature individual skillbooks into a cohesive platform covering the full QA lifecycle — beyond personal tools into team infrastructure.</p></li>
-            <li><strong>AI Native QA System</strong><p>A 39K-character proposal for a fundamentally new approach to quality assurance powered by AI agents end-to-end.</p></li>
-        </ul>
+    <section class="section animate-on-scroll">
+        <div class="section-title">Current Focus</div>
+        <p style="font-size:1.1rem; max-width:720px; color:var(--text-secondary);">
+            Building the architectural layer for ambient, agentic AI — systems that think, act, and evolve across devices and surfaces. 
+            From personal intelligence tools to large-scale autonomous platforms.
+        </p>
     </section>
 
     <!-- FOOTER -->
     <footer class="footer">
-        <div class="footer-links">
-            <a href="mailto:hareeakkala@gmail.com">hareeakkala@gmail.com</a>
-            <a href="https://www.linkedin.com/in/hkingerza/" target="_blank">LinkedIn</a>
-        </div>
+        <p style="margin-bottom:12px;">
+            <a href="mailto:hareeakkala@gmail.com" style="color:var(--accent); text-decoration:none;">hareeakkala@gmail.com</a> • 
+            <a href="https://www.linkedin.com/in/hkingerza/" target="_blank" style="color:var(--accent); text-decoration:none;">LinkedIn</a>
+        </p>
         <p>© 2026 Haree Akkala • Built with AI</p>
     </footer>
 </div>
 
 <script>
-    // Theme Toggle
+    // Theme Toggle + Scroll Animation (same as before)
     const toggle = document.getElementById('themeToggle');
     const root = document.documentElement;
-
     function setTheme(theme) {
         root.setAttribute('data-theme', theme);
         toggle.textContent = theme === 'dark' ? '☀️' : '🌙';
         localStorage.setItem('theme', theme);
     }
-
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        setTheme(savedTheme);
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        setTheme('dark');
-    }
+    if (localStorage.getItem('theme')) setTheme(localStorage.getItem('theme'));
+    else if (window.matchMedia('(prefers-color-scheme: dark)').matches) setTheme('dark');
 
     toggle.addEventListener('click', () => {
-        const current = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        setTheme(current);
+        const isDark = root.getAttribute('data-theme') === 'dark';
+        setTheme(isDark ? 'light' : 'dark');
     });
 
-    // Smooth Scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', e => {
-            e.preventDefault();
-            const target = document.querySelector(anchor.getAttribute('href'));
-            if (target) target.scrollIntoView({ behavior: 'smooth' });
-        });
-    });
-
-    // Scroll Reveal
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.12 });
-
+    const observer = new IntersectionObserver((e) => e.forEach(entry => entry.isIntersecting && entry.target.classList.add('visible')), {threshold: 0.1});
     document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 </script>
 </body>
