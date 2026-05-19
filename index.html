@@ -3,202 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Akkala AI — Practical AI that builds websites, automates your business, and handles operations. Done-for-you solutions for small businesses and solo founders.">
-    <title>Akkala AI | Practical AI That Gets Work Done</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
+    <title>Akkala AI • Practical AI That Gets Work Done</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
         :root {
-            --font-sans: 'Space Grotesk', system-ui, sans-serif;
-            --font-serif: 'Newsreader', Georgia, serif;
-            --font-mono: 'JetBrains Mono', monospace;
-            --bg-base: #FAFAF8;
-            --bg-raised: #FFFFFF;
-            --text-primary: #1A1A1A;
-            --text-secondary: #555555;
-            --accent: #4F46E5;
-            --accent-glow: rgba(79, 70, 229, 0.15);
-            --border: rgba(0,0,0,0.08);
+            --accent: #6366f1;
         }
-        [data-theme="dark"] {
-            --bg-base: #0A0A0A;
-            --bg-raised: #141414;
-            --text-primary: #F0F0F0;
-            --text-secondary: #A0A0A0;
-            --accent: #818CF8;
-            --accent-glow: rgba(129, 140, 248, 0.2);
-            --border: rgba(255,255,255,0.08);
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
-            font-family: var(--font-sans);
-            font-size: 15.5px;
-            line-height: 1.7;
-            color: var(--text-primary);
-            background: var(--bg-base);
+            font-family: 'Inter', system_ui, sans-serif;
         }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-
-        header {
-            position: sticky; top: 0; z-index: 100;
-            background: var(--bg-base);
-            border-bottom: 1px solid var(--border);
-            padding: 18px 0;
-        }
-        .nav { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: 700; font-size: 1.35rem; letter-spacing: -0.03em; }
-
-        .hero {
-            padding: 120px 0 80px;
-            text-align: center;
-        }
-        .hero h1 {
-            font-size: clamp(2.6rem, 7vw, 4.2rem);
-            font-weight: 700;
-            letter-spacing: -0.05em;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-        .hero-subtitle {
-            font-size: clamp(1.15rem, 3vw, 1.4rem);
-            max-width: 720px;
-            margin: 0 auto 40px;
-            color: var(--text-secondary);
-        }
-
-        .cta-button {
-            background: var(--accent);
-            color: white;
-            padding: 16px 36px;
-            border-radius: 9999px;
+        
+        .font-display {
+            font-family: 'Space Grotesk', 'Inter', system_ui, sans-serif;
             font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 1.05rem;
         }
 
-        .section { padding: 80px 0; }
-        .section-title {
-            font-family: var(--font-mono);
-            font-size: 13px;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 28px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-        }
-        @media (min-width: 768px) {
-            .services-grid { grid-template-columns: repeat(3, 1fr); }
-        }
         .service-card {
-            padding: 32px;
-            background: var(--bg-raised);
-            border: 1px solid var(--border);
-            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .service-card h3 { margin-bottom: 12px; }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
 
-        .footer {
-            padding: 80px 0 50px;
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 14px;
+        .section-header {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+
+        .nav-active {
+            color: #6366f1;
+            font-weight: 600;
         }
     </style>
 </head>
-<body>
-<header>
-    <div class="container nav">
-        <div class="logo">Akkala AI</div>
-        <button class="theme-toggle" id="themeToggle">☀️</button>
-    </div>
-</header>
+<body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+    <!-- Navbar -->
+    <nav class="border-b border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-lg sticky top-0 z-50">
+        <div class="max-w-screen-xl mx-auto px-6">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center gap-x-3">
+                    <div class="w-9 h-9 bg-indigo-600 rounded-2xl flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl tracking-tighter">A</span>
+                    </div>
+                    <div>
+                        <span class="font-semibold text-xl tracking-tight">Akkala AI</span>
+                    </div>
+                </div>
 
-<div class="container">
-    <!-- HERO -->
-    <section class="hero">
-        <h1>Practical AI that gets real work done.</h1>
-        <p class="hero-subtitle">
-            We build websites, automate your business operations, and handle the busywork — 
-            so you can focus on what matters. Fast, reliable, and designed for small businesses and solo operators.
-        </p>
-        <a href="mailto:hareeakkala@gmail.com" class="cta-button">Start a Project →</a>
-    </section>
+                <div class="flex items-center gap-x-4">
+                    <!-- Nav Links -->
+                    <div class="hidden md:flex items-center gap-x-8 text-sm">
+                        <a href="#services" class="hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">Services</a>
+                        <a href="#how" class="hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">How it works</a>
+                        <a href="#examples" class="hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">Examples</a>
+                    </div>
 
-    <!-- SERVICES -->
-    <section class="section">
-        <div class="section-title">What We Do</div>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Website Building</h3>
-                <p>Beautiful, functional websites with booking, scheduling, payments, and everything you need to run your business online.</p>
-            </div>
-            <div class="service-card">
-                <h3>Business Automation & Setup</h3>
-                <p>Calendars, booking systems, workflows, CRMs, and automations that actually work — set up the right way from day one.</p>
-            </div>
-            <div class="service-card">
-                <h3>Operations Support</h3>
-                <p>Ongoing help running the day-to-day: systems, processes, content, admin, and AI-powered support tailored to your business.</p>
+                    <!-- Theme Toggle -->
+                    <button id="themeToggle" 
+                            class="w-9 h-9 flex items-center justify-center rounded-2xl border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors">
+                        <i class="fa-solid fa-moon text-lg dark:hidden"></i>
+                        <i class="fa-solid fa-sun text-lg hidden dark:block"></i>
+                    </button>
+
+                    <a href="mailto:hareeakkala@gmail.com" 
+                       class="px-5 py-2.5 bg-zinc-900 hover:bg-black text-white text-sm font-medium rounded-3xl transition-colors dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-100">
+                        Start a project
+                    </a>
+                </div>
             </div>
         </div>
-    </section>
+    </nav>
 
-    <!-- HOW IT WORKS -->
-    <section class="section">
-        <div class="section-title">How It Works</div>
-        <p style="max-width: 720px; font-size: 1.1rem; color: var(--text-secondary);">
-            1. Tell us what you need &nbsp;→&nbsp; 2. We handle the building and setup using powerful AI &nbsp;→&nbsp; 3. You get a working system (fast).<br><br>
-            We specialize in getting things live quickly without the usual headaches.
-        </p>
-    </section>
+    <!-- Hero -->
+    <div class="max-w-screen-xl mx-auto px-6 pt-20 pb-16">
+        <div class="max-w-3xl">
+            <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-3xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 mb-6">
+                <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                <span class="text-sm font-medium">Now accepting new projects</span>
+            </div>
 
-    <!-- WHO WE HELP -->
-    <section class="section">
-        <div class="section-title">Who We Help</div>
-        <p style="max-width: 720px; font-size: 1.1rem; color: var(--text-secondary);">
-            Small businesses, mom & pop shops, solo founders, side gigs, and independent operators across any industry. 
-            Whether you need a simple booking site or full operations automation, we make it happen.
-        </p>
-    </section>
+            <h1 class="text-6xl md:text-7xl font-semibold tracking-tighter leading-none">
+                AI that actually<br>gets work done.
+            </h1>
+            
+            <p class="mt-6 text-xl text-zinc-600 dark:text-zinc-400 max-w-lg">
+                We build websites, automate your operations, and handle the busywork — 
+                so you can focus on running your business.
+            </p>
 
-    <!-- GET STARTED -->
-    <section class="section" style="text-align: center; padding-bottom: 100px;">
-        <h2 style="margin-bottom: 16px;">Ready to get started?</h2>
-        <p style="margin-bottom: 32px; color: var(--text-secondary);">Let’s build something useful for your business.</p>
-        <a href="mailto:hareeakkala@gmail.com" class="cta-button">Book a Discovery Call</a>
-    </section>
-</div>
+            <div class="flex items-center gap-x-4 mt-10">
+                <a href="mailto:hareeakkala@gmail.com" 
+                   class="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 transition-colors text-white font-semibold rounded-3xl text-lg">
+                    Start a project
+                </a>
+                <a href="#how" 
+                   class="px-6 py-4 border border-zinc-300 dark:border-zinc-700 hover:bg-white dark:hover:bg-zinc-900 transition-colors font-medium rounded-3xl text-lg flex items-center gap-x-2">
+                    See how it works
+                </a>
+            </div>
+            
+            <p class="mt-6 text-sm text-zinc-500">Perfect for small businesses, solo founders, and side gigs.</p>
+        </div>
+    </div>
 
-<footer class="footer">
-    <p>
-        <a href="mailto:hareeakkala@gmail.com" style="color:var(--accent); text-decoration:none;">hareeakkala@gmail.com</a> • 
-        <a href="https://www.linkedin.com/in/hkingerza/" target="_blank" style="color:var(--accent); text-decoration:none;">LinkedIn</a>
-    </p>
-    <p style="margin-top: 12px;">© 2026 Akkala AI</p>
-</footer>
+    <!-- Services -->
+    <div id="services" class="max-w-screen-xl mx-auto px-6 py-16 border-t border-zinc-200 dark:border-zinc-800">
+        <div class="flex items-end justify-between mb-10">
+            <div>
+                <div class="text-sm font-mono tracking-[3px] text-indigo-600 dark:text-indigo-400 mb-3">WHAT WE DO</div>
+                <h2 class="section-header tracking-tighter">Services that move the needle</h2>
+            </div>
+        </div>
 
-<script>
-    const toggle = document.getElementById('themeToggle');
-    const root = document.documentElement;
-    function setTheme(theme) {
-        root.setAttribute('data-theme', theme);
-        toggle.textContent = theme === 'dark' ? '☀️' : '🌙';
-        localStorage.setItem('theme', theme);
-    }
-    if (localStorage.getItem('theme')) setTheme(localStorage.getItem('theme'));
-    else if (window.matchMedia('(prefers-color-scheme: dark)').matches) setTheme('dark');
-    toggle.addEventListener('click', () => {
-        const isDark = root.getAttribute('data-theme') === 'dark';
-        setTheme(isDark ? 'light' : 'dark');
-    });
-</script>
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Service 1 -->
+            <div class="service-card bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-8">
+                <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-950 text-indigo-600 rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fa-solid fa-globe text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-semibold tracking-tight mb-3">Website Building</h3>
+                <p class="text-zinc-600 dark:text-zinc-400">Beautiful, conversion-focused websites with booking, payments, and everything your business needs to run online.</p>
+                
+                <div class="mt-8 pt-6 border-t border-zinc-100 dark:border-zinc-800 text-sm">
+                    <div class="flex items-center gap-x-2 text-emerald-600 dark:text-emerald-400">
+                        <i class="fa-solid fa-check"></i>
+                        <span>Booking &amp; scheduling systems</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-card bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-8">
+                <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-950 text-indigo-600 rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fa-solid fa-robot text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-semibold tracking-tight mb-3">Business Automation</h3>
+                <p class="text-zinc-600 dark:text-zinc-400">We set up calendars, booking systems, workflows, and automations that actually work — without the usual complexity.</p>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-8">
+                <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-950 text-indigo-600 rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fa-solid fa-cogs text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-semibold tracking-tight mb-3">Operations Support</h3>
+                <p class="text-zinc-600 dark:text-zinc-400">Ongoing help running day-to-day operations using AI — admin, systems, content, and support tailored to your business.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- How it works -->
+    <div id="how" class="max-w-screen-xl mx-auto px-6 py-16 border-t border-zinc-200 dark:border-zinc-800">
+        <div class="max-w-2xl">
+            <div class="text-sm font-mono tracking-[3px] text-indigo-600 dark:text-indigo-400 mb-3">HOW IT WORKS</div>
+            <h2 class="section-header tracking-tighter mb-10">Simple. Fast. Effective.</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div>
+                <div class="text-5xl font-semibold text-zinc-200 dark:text-zinc-800">01</div>
+                <div class="mt-4 font-semibold text-xl">Tell us what you need</div>
+                <p class="mt-2 text-zinc-600 dark:text-zinc-400">Share your business goals and current pain points.</p>
+            </div>
+            <div>
+                <div class="text-5xl font-semibold text-zinc-200 dark:text-zinc-800">02</div>
+                <div class="mt-4 font-semibold text-xl">We build it with AI</div>
+                <p class="mt-2 text-zinc-600 dark:text-zinc-400">We design, build, and set everything up using powerful AI tools.</p>
+            </div>
+            <div>
+                <div class="text-5xl font-semibold text-zinc-200 dark:text-zinc-800">03</div>
+                <div class="mt-4 font-semibold text-xl">You get results</div>
+                <p class="mt-2 text-zinc-600 dark:text-zinc-400">Launch fast with systems that actually work.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="max-w-screen-xl mx-auto px-6 py-20 border-t border-zinc-200 dark:border-zinc-800">
+        <div class="bg-zinc-900 dark:bg-white rounded-3xl px-10 py-14 text-center text-white dark:text-zinc-900">
+            <h2 class="text-4xl font-semibold tracking-tighter">Ready to get your project started?</h2>
+            <p class="mt-4 text-lg opacity-80">Let's talk about what you need and how we can help.</p>
+            
+            <a href="mailto:hareeakkala@gmail.com" 
+               class="mt-8 inline-block px-8 py-4 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white font-semibold rounded-3xl hover:scale-[1.02] transition-transform">
+                Book a discovery call
+            </a>
+        </div>
+    </div>
+
+    <footer class="border-t border-zinc-200 dark:border-zinc-800 py-8">
+        <div class="max-w-screen-xl mx-auto px-6 text-sm text-zinc-500 flex flex-col md:flex-row justify-between gap-y-4">
+            <div>© 2026 Akkala AI</div>
+            <div class="flex gap-x-6">
+                <a href="mailto:hareeakkala@gmail.com" class="hover:text-zinc-700 dark:hover:text-zinc-300">Contact</a>
+                <a href="https://www.linkedin.com/in/hkingerza/" class="hover:text-zinc-700 dark:hover:text-zinc-300">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind script
+        function initializeTailwind() {
+            document.documentElement.style.setProperty('--accent', '#6366f1');
+        }
+        
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        
+        function setTheme(isDark) {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        
+        // Initialize theme
+        if (localStorage.getItem('theme') === 'dark' || 
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            setTheme(true);
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            setTheme(!isDark);
+        });
+        
+        initializeTailwind();
+    </script>
 </body>
 </html>
