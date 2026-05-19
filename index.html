@@ -1,1 +1,511 @@
-<!DOCTYPE html>\n<html lang="en">\n<head>\n <meta charset="UTF-8">\n <meta name="viewport" content="width=device-width, initial-scale=1.0">\n <title>Haree Akkala — AI Systems Architect</title>\n <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">\n <style>\n /*\n * DESIGN PHILOSOPHY: "Quiet Authority"\n * Movement: Swiss International meets editorial warmth\n * Color: Warm stone neutrals + single electric indigo accent\n * — competence through restraint, energy through contrast\n * Layout: Asymmetric content blocks, generous negative space, data-forward\n * Signature: Oversized stat numerals in mono, hairline rules, layered depth\n * Type: Space Grotesk (geometric authority) + Newsreader (editorial warmth)\n * Anti-model: NOT a dark dev portfolio with neon gradients. NOT card soup.\n * Motion: Subtle fade-ins, scroll-reveal, confidence not flashiness\n */\n\n *, *::before, ::after { box-sizing: border-box; margin: 0; padding: 0; }\n \n :root {\n --font-sans: 'Space Grotesk', system-ui, sans-serif;\n --font-serif: 'Newsreader', Georgia, serif;\n --font-mono: 'JetBrains Mono', monospace;\n \n --bg-base: #FAFAF8;\n --bg-raised: #FFFFFF;\n --bg-dark: #0F0F0F;\n --text-primary: #1A1A1A;\n --text-secondary: #555555;\n --text-tertiary: #888888;\n --accent: #4F46E5;\n --accent-muted: rgba(79, 70, 229, 0.08);\n --accent-glow: rgba(79, 70, 229, 0.15);\n --border: rgba(0,0,0,0.08);\n --warm: #F5F0EB;\n }\n\n @media (prefers-color-scheme: dark) {\n :root {\n --bg-base: #0A0A0A;\n --bg-raised: #141414;\n --bg-dark: #000000;\n --text-primary: #F0F0F0;\n --text-secondary: #A0A0A0;\n --text-tertiary: #666666;\n --accent: #818CF8;\n --accent-muted: rgba(129, 140, 248, 0.1);\n --accent-glow: rgba(129, 140, 248, 0.2);\n --border: rgba(255,255,255,0.08);\n --warm: #1A1816;\n }\n }\n\n body {\n font-family: var(--font-sans);\n font-size: 15px;\n line-height: 1.6;\n color: var(--text-primary);\n background: var(--bg-base);\n text-rendering: optimizeLegibility;\n -webkit-font-smoothing: antialiased;\n overflow-x: hidden;\n }\n\n .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }\n\n / === HERO === /\n .hero {\n padding: 80px 0 60px;\n border-bottom: 1px solid var(--border);\n }\n .hero-eyebrow {\n font-family: var(--font-mono);\n font-size: 11px;\n letter-spacing: 0.12em;\n text-transform: uppercase;\n color: var(--accent);\n margin-bottom: 16px;\n }\n .hero h1 {\n font-size: clamp(2.2rem, 6vw, 3.8rem);\n font-weight: 700;\n letter-spacing: -0.03em;\n line-height: 1.1;\n margin-bottom: 20px;\n }\n .hero-subtitle {\n font-family: var(--font-serif);\n font-size: clamp(1rem, 2.5vw, 1.25rem);\n color: var(--text-secondary);\n max-width: 600px;\n line-height: 1.6;\n font-style: italic;\n }\n .hero-meta {\n margin-top: 28px;\n display: flex;\n flex-wrap: wrap;\n gap: 16px;\n font-size: 13px;\n color: var(--text-tertiary);\n }\n .hero-meta span {\n display: flex;\n align-items: center;\n gap: 6px;\n }\n .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }\n\n / === STATS === /\n .stats {\n padding: 48px 0;\n display: grid;\n grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));\n gap: 24px;\n border-bottom: 1px solid var(--border);\n }\n .stat {\n text-align: center;\n }\n .stat-number {\n font-family: var(--font-mono);\n font-size: clamp(2rem, 5vw, 2.8rem);\n font-weight: 700;\n color: var(--accent);\n letter-spacing: -0.02em;\n line-height: 1;\n }\n .stat-label {\n margin-top: 8px;\n font-size: 12px;\n text-transform: uppercase;\n letter-spacing: 0.08em;\n color: var(--text-tertiary);\n }\n\n / === SECTION HEADINGS === /\n .section { padding: 56px 0; }\n .section-title {\n font-size: 12px;\n font-family: var(--font-mono);\n text-transform: uppercase;\n letter-spacing: 0.1em;\n color: var(--accent);\n margin-bottom: 32px;\n padding-bottom: 12px;\n border-bottom: 1px solid var(--border);\n }\n\n / === PRINCIPLES (Timeline) === /\n .principles-list {\n list-style: none;\n position: relative;\n padding-left: 24px;\n }\n .principles-list::before {\n content: '';\n position: absolute;\n left: 4px;\n top: 8px;\n bottom: 8px;\n width: 1px;\n background: var(--border);\n }\n .principles-list li {\n position: relative;\n margin-bottom: 24px;\n padding-left: 16px;\n }\n .principles-list li::before {\n content: '';\n position: absolute;\n left: -24px;\n top: 8px;\n width: 9px;\n height: 9px;\n border-radius: 50%;\n background: var(--bg-base);\n border: 2px solid var(--accent);\n }\n .principles-list li strong {\n display: block;\n font-size: 16px;\n margin-bottom: 4px;\n }\n .principles-list li p {\n font-size: 14px;\n color: var(--text-secondary);\n max-width: 560px;\n }\n\n / === SKILLBOOKS (Asymmetric Grid) === /\n .skillbooks-grid {\n display: grid;\n grid-template-columns: 1fr;\n gap: 12px;\n }\n @media (min-width: 600px) {\n .skillbooks-grid { grid-template-columns: 1fr 1fr; }\n }\n .skillbook-card {\n padding: 20px;\n background: var(--bg-raised);\n border: 1px solid var(--border);\n border-radius: 10px;\n transition: border-color 0.2s, box-shadow 0.2s;\n }\n .skillbook-card:hover {\n border-color: var(--accent);\n box-shadow: 0 4px 20px var(--accent-glow);\n }\n .skillbook-card h3 {\n font-size: 15px;\n font-weight: 600;\n margin-bottom: 6px;\n }\n .skillbook-card p {\n font-size: 13px;\n color: var(--text-secondary);\n line-height: 1.5;\n }\n .skillbook-tag {\n display: inline-block;\n margin-top: 10px;\n font-family: var(--font-mono);\n font-size: 10px;\n padding: 3px 8px;\n background: var(--accent-muted);\n color: var(--accent);\n border-radius: 4px;\n letter-spacing: 0.04em;\n }\n\n / === SYSTEMS (Data Table) === /\n .systems-table {\n width: 100%;\n border-collapse: collapse;\n font-size: 13px;\n }\n .systems-table th {\n text-align: left;\n font-size: 11px;\n text-transform: uppercase;\n letter-spacing: 0.06em;\n color: var(--text-tertiary);\n padding: 8px 12px;\n border-bottom: 1px solid var(--border);\n }\n .systems-table td {\n padding: 12px;\n border-bottom: 1px solid var(--border);\n vertical-align: top;\n }\n .systems-table tr:hover td { background: var(--accent-muted); }\n\n / === QUOTE === /\n .quote-section {\n padding: 48px 0;\n border-top: 1px solid var(--border);\n border-bottom: 1px solid var(--border);\n background: var(--warm);\n margin: 0 -24px;\n padding-left: 24px;\n padding-right: 24px;\n }\n .quote-text {\n font-family: var(--font-serif);\n font-size: clamp(1.1rem, 3vw, 1.5rem);\n line-height: 1.6;\n color: var(--text-primary);\n max-width: 640px;\n margin: 0 auto;\n text-align: center;\n }\n .quote-attr {\n text-align: center;\n margin-top: 16px;\n font-size: 12px;\n color: var(--text-tertiary);\n letter-spacing: 0.06em;\n text-transform: uppercase;\n }\n\n / === FOOTER === /\n .footer {\n padding: 40px 0;\n text-align: center;\n font-size: 13px;\n color: var(--text-tertiary);\n }\n .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; }\n .footer-links a { color: var(--accent); text-decoration: none; font-weight: 500; }\n .footer-links a:hover { text-decoration: underline; }\n\n / Animations */\n @keyframes fadeUp {\n from { opacity: 0; transform: translateY(16px); }\n to { opacity: 1; transform: translateY(0); }\n }\n .hero, .stats, .section { animation: fadeUp 0.6s ease both; }\n .stats { animation-delay: 0.1s; }\n </style>\n</head>\n<body>\n\n<div class="container">\n <!-- HERO -->\n <section class="hero">\n <div class="hero-eyebrow">AI Systems Architect • QA Engineering</div>\n <h1>Haree Akkala</h1>\n <p class="hero-subtitle">\n Systems thinker who builds infrastructure where nothing existed. \n 8 AI skillbooks. 14 operational systems. 9 teams. One engineer's instinct applied to quality at scale.\n </p>\n <div class="hero-meta">\n <span><span class="dot"></span> Meta · GenAI QA</span>\n <span><span class="dot"></span> Menlo Park, CA</span>\n <span><span class="dot"></span> Since Feb 2023</span>\n </div>\n </section>\n\n <!-- STATS -->\n <section class="stats">\n <div class="stat"><div class="stat-number">8</div><div class="stat-label">AI Skillbooks</div></div>\n <div class="stat"><div class="stat-number">14</div><div class="stat-label">Systems Built</div></div>\n <div class="stat"><div class="stat-number">9</div><div class="stat-label">Teams Served</div></div>\n <div class="stat"><div class="stat-number">2,700+</div><div class="stat-label">Test Cases</div></div>\n <div class="stat"><div class="stat-number">51+</div><div class="stat-label">Tasks Managed</div></div>\n </section>\n\n <!-- PRINCIPLES (Timeline layout) -->\n <section class="section">\n <div class="section-title">Core Principles</div>\n <ul class="principles-list">\n <li><strong>Own the System, Not the Task</strong><p>Every piece of work reveals a systems builder. Spreadsheets become operational infrastructure. Skillbooks become interconnected ecosystems.</p></li>\n <li><strong>Make Quality Visible</strong><p>Data-first communication. Quantified ROI. Turning invisible work into measurable outcomes decision-makers can't ignore.</p></li>\n <li><strong>Anticipate, Don't React</strong><p>SEV prevention frameworks. Upstream QA. Test frameworks designed before products launch. 40% of work is self-initiated.</p></li>\n <li><strong>Automate Everything Repeatable</strong><p>If it happens twice, build a system. AI-agent-enabled trackers, auto-compliance reporting, auto-generated status posts.</p></li>\n <li><strong>Document for the Person After You</strong><p>Every system designed for team execution. Explicit runbooks. Knowledge transfers that outlast involvement.</p></li>\n </ul>\n </section>\n\n <!-- SKILLBOOKS (Card Grid) -->\n <section class="section">\n <div class="section-title">AI Skillbook Ecosystem</div>\n <div class="skillbooks-grid">\n <div class="skillbook-card">\n <h3>QA Compliance Report</h3>\n <p>Configurable weekly bug tag compliance engine. Queries closed bugs, computes compliance across 4 categories, delivers to GChat.</p>\n <span class="skillbook-tag">PRODUCTIZED</span>\n </div>\n <div class="skillbook-card">\n <h3>Fix Rate Tracker</h3>\n <p>Auto-tracks QA fix rates, scans comments, follows up with engineers via DMs and task comments, calculates impact.</p>\n <span class="skillbook-tag">AUTOMATION</span>\n </div>\n <div class="skillbook-card">\n <h3>MAIV2 Knowledge Base</h3>\n <p>Auto-updating knowledge base for Meta AI Voice 2.0. Architecture, dogfooding, contacts, known issues, test plans.</p>\n <span class="skillbook-tag">KNOWLEDGE</span>\n </div>\n <div class="skillbook-card">\n <h3>MAIV2 Test Case Generator</h3>\n <p>Pulls ALL project context and generates comprehensive test plans for Voice features in Google Sheets.</p>\n <span class="skillbook-tag">GENERATION</span>\n </div>\n <div class="skillbook-card">\n <h3>QA Bug Reproduction</h3>\n <p>End-to-end bug repro: fetches details, provisions test accounts, attempts reproduction, generates structured reports.</p>\n <span class="skillbook-tag">EXECUTION</span>\n </div>\n <div class="skillbook-card">\n <h3>Daily Brief System</h3>\n <p>Personalized daily briefing covering calendar, tasks, diffs, GChat, posts, thanks, and AI meeting notes.</p>\n <span class="skillbook-tag">OPERATIONS</span>\n </div>\n <div class="skillbook-card">\n <h3>GenAI QA Compliance Fixer</h3>\n <p>Analyzes non-compliant bugs, infers missing tags using LLM analysis, auto-adds high-confidence tags.</p>\n <span class="skillbook-tag">AI-NATIVE</span>\n </div>\n <div class="skillbook-card">\n <h3>Writing Style Clone</h3>\n <p>Exhaustively analyzed 1.3M characters across 1,001 items to create a personal ghostwriting system.</p>\n <span class="skillbook-tag">PERSONAL AI</span>\n </div>\n </div>\n </section>\n\n <!-- OPERATIONAL SYSTEMS (Table) -->\n <section class="section">\n <div class="section-title">Operational Systems Built from Zero</div>\n <div style="overflow-x:auto;">\n <table class="systems-table">\n <thead><tr><th>System</th><th>Scope</th><th>Impact</th></tr></thead>\n <tbody>\n <tr><td><strong>RTAI Test Set Tracker</strong></td><td>AI-agent enabled, daily 5PM auto-monitoring</td><td>9+ columns auto-filled from MTT API</td></tr>\n <tr><td><strong>Release Cycle Reference</strong></td><td>Hierarchical Master → Platform → Detail</td><td>7+ surfaces coordinated</td></tr>\n <tr><td><strong>Bug Compliance Dashboard</strong></td><td>Cross-pillar tag compliance tracking</td><td>5 pillars, 4 compliance categories</td></tr>\n <tr><td><strong>i18n Test Framework</strong></td><td>26 languages across multiple surfaces</td><td>FB/IG/MSGR/WA/C50/Hatch/WWW</td></tr>\n <tr><td><strong>SEV Prevention Framework</strong></td><td>Proactive failure detection across 6 areas</td><td>Zero-to-one infrastructure</td></tr>\n <tr><td><strong>Offshore Coordination System</strong></td><td>TechM team task routing & tracking</td><td>9+ person team enabled</td></tr>\n </tbody>\n </table>\n </div>\n </section>\n\n <!-- QUOTE -->\n <section class="quote-section">\n <p class="quote-text">"He doesn't solve problems — he builds systems that prevent problems from recurring. Every artifact he creates is part of a larger interconnected whole."</p>\n <p class="quote-attr">From Deep Profile Analysis • May 2026</p>\n </section>\n\n <!-- VISION -->\n <section class="section">\n <div class="section-title">Current Direction</div>\n <ul class="principles-list">\n <li><strong>Applied AI for QA</strong><p>Replace ALL manual/non-AI QA infrastructure with AI-based equivalents. Measure: % of processes automated, time savings per sprint.</p></li>\n <li><strong>10x-QA Platform Evolution</strong><p>Mature individual skillbooks into a cohesive platform covering the full QA lifecycle — beyond personal tools into team infrastructure.</p></li>\n <li><strong>AI Native QA System</strong><p>A 39K-character proposal for a fundamentally new approach to quality assurance powered by AI agents end-to-end.</p></li>\n </ul>\n </section>\n\n <!-- FOOTER -->\n <footer class="footer">\n <div class="footer-links">\n <a href="mailto:hrprasad@meta.com">hrprasad@meta.com</a>\n <a href="https://www.internalfb.com/careers/profile/100000569375965">Meta Profile</a>\n </div>\n <p>© 2026 Haree Akkala · Built with AI</p>\n </footer>\n</div>\n\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haree Akkala — AI Systems Architect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /*
+         * DESIGN PHILOSOPHY: "Quiet Authority"
+         * Movement: Swiss International meets editorial warmth
+         * Color: Warm stone neutrals + single electric indigo accent
+         * Layout: Asymmetric content blocks, generous negative space, data-forward
+         */
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --font-sans: 'Space Grotesk', system-ui, sans-serif;
+            --font-serif: 'Newsreader', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            --bg-base: #FAFAF8;
+            --bg-raised: #FFFFFF;
+            --bg-dark: #0F0F0F;
+            --text-primary: #1A1A1A;
+            --text-secondary: #555555;
+            --text-tertiary: #888888;
+            --accent: #4F46E5;
+            --accent-muted: rgba(79, 70, 229, 0.08);
+            --accent-glow: rgba(79, 70, 229, 0.15);
+            --border: rgba(0,0,0,0.08);
+            --warm: #F5F0EB;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-base: #0A0A0A;
+                --bg-raised: #141414;
+                --bg-dark: #000000;
+                --text-primary: #F0F0F0;
+                --text-secondary: #A0A0A0;
+                --text-tertiary: #666666;
+                --accent: #818CF8;
+                --accent-muted: rgba(129, 140, 248, 0.1);
+                --accent-glow: rgba(129, 140, 248, 0.2);
+                --border: rgba(255,255,255,0.08);
+                --warm: #1A1816;
+            }
+        }
+
+        body {
+            font-family: var(--font-sans);
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-base);
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* === HERO === */
+        .hero {
+            padding: 80px 0 60px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 6vw, 3.8rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-serif);
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .hero-meta {
+            margin-top: 28px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 13px;
+            color: var(--text-tertiary);
+        }
+
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        /* === STATS === */
+        .stats {
+            padding: 48px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-mono);
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: -0.02em;
+            line-height: 1;
+        }
+
+        .stat-label {
+            margin-top: 8px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-tertiary);
+        }
+
+        /* === SECTION HEADINGS === */
+        .section {
+            padding: 56px 0;
+        }
+
+        .section-title {
+            font-size: 12px;
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 32px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* === PRINCIPLES === */
+        .principles-list {
+            list-style: none;
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .principles-list::before {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 8px;
+            bottom: 8px;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .principles-list li {
+            position: relative;
+            margin-bottom: 24px;
+            padding-left: 16px;
+        }
+
+        .principles-list li::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 8px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--bg-base);
+            border: 2px solid var(--accent);
+        }
+
+        .principles-list li strong {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .principles-list li p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            max-width: 560px;
+        }
+
+        /* === SKILLBOOKS === */
+        .skillbooks-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        @media (min-width: 600px) {
+            .skillbooks-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .skillbook-card {
+            padding: 20px;
+            background: var(--bg-raised);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .skillbook-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        .skillbook-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .skillbook-card p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .skillbook-tag {
+            display: inline-block;
+            margin-top: 10px;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            padding: 3px 8px;
+            background: var(--accent-muted);
+            color: var(--accent);
+            border-radius: 4px;
+            letter-spacing: 0.04em;
+        }
+
+        /* === SYSTEMS TABLE === */
+        .systems-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .systems-table th {
+            text-align: left;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-tertiary);
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .systems-table td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .systems-table tr:hover td {
+            background: var(--accent-muted);
+        }
+
+        /* === QUOTE === */
+        .quote-section {
+            padding: 48px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--warm);
+            margin: 0 -24px;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+
+        .quote-text {
+            font-family: var(--font-serif);
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            line-height: 1.6;
+            color: var(--text-primary);
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .quote-attr {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 12px;
+            color: var(--text-tertiary);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        /* === FOOTER === */
+        .footer {
+            padding: 40px 0;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-tertiary);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero, .stats, .section {
+            animation: fadeUp 0.6s ease both;
+        }
+
+        .stats {
+            animation-delay: 0.1s;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-eyebrow">AI Systems Architect • QA Engineering</div>
+        <h1>Haree Akkala</h1>
+        <p class="hero-subtitle">
+            Systems thinker who builds infrastructure where nothing existed.<br>
+            8 AI skillbooks. 14 operational systems. 9 teams. One engineer's instinct applied to quality at scale.
+        </p>
+        <div class="hero-meta">
+            <span><span class="dot"></span> Meta · GenAI QA</span>
+            <span><span class="dot"></span> Menlo Park, CA</span>
+            <span><span class="dot"></span> Since Feb 2023</span>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+        <div class="stat"><div class="stat-number">8</div><div class="stat-label">AI Skillbooks</div></div>
+        <div class="stat"><div class="stat-number">14</div><div class="stat-label">Systems Built</div></div>
+        <div class="stat"><div class="stat-number">9</div><div class="stat-label">Teams Served</div></div>
+        <div class="stat"><div class="stat-number">2,700+</div><div class="stat-label">Test Cases</div></div>
+        <div class="stat"><div class="stat-number">51+</div><div class="stat-label">Tasks Managed</div></div>
+    </section>
+
+    <!-- CORE PRINCIPLES -->
+    <section class="section">
+        <div class="section-title">Core Principles</div>
+        <ul class="principles-list">
+            <li><strong>Own the System, Not the Task</strong><p>Every piece of work reveals a systems builder. Spreadsheets become operational infrastructure. Skillbooks become interconnected ecosystems.</p></li>
+            <li><strong>Make Quality Visible</strong><p>Data-first communication. Quantified ROI. Turning invisible work into measurable outcomes decision-makers can't ignore.</p></li>
+            <li><strong>Anticipate, Don't React</strong><p>SEV prevention frameworks. Upstream QA. Test frameworks designed before products launch. 40% of work is self-initiated.</p></li>
+            <li><strong>Automate Everything Repeatable</strong><p>If it happens twice, build a system. AI-agent-enabled trackers, auto-compliance reporting, auto-generated status posts.</p></li>
+            <li><strong>Document for the Person After You</strong><p>Every system designed for team execution. Explicit runbooks. Knowledge transfers that outlast involvement.</p></li>
+        </ul>
+    </section>
+
+    <!-- AI SKILLBOOKS -->
+    <section class="section">
+        <div class="section-title">AI Skillbook Ecosystem</div>
+        <div class="skillbooks-grid">
+            <div class="skillbook-card">
+                <h3>QA Compliance Report</h3>
+                <p>Configurable weekly bug tag compliance engine. Queries closed bugs, computes compliance across 4 categories, delivers to GChat.</p>
+                <span class="skillbook-tag">PRODUCTIZED</span>
+            </div>
+            <div class="skillbook-card">
+                <h3>Fix Rate Tracker</h3>
+                <p>Auto-tracks QA fix rates, scans comments, follows up with engineers via DMs and task comments, calculates impact.</p>
+                <span class="skillbook-tag">AUTOMATION</span>
+            </div>
+            <div class="skillbook-card">
+                <h3>MAIV2 Knowledge Base</h3>
+                <p>Auto-updating knowledge base for Meta AI Voice 2.0. Architecture, dogfooding, contacts, known issues, test plans.</p>
+                <span class="skillbook-tag">KNOWLEDGE</span>
+            </div>
+            <div class="skillbook-card">
+                <h3>MAIV2 Test Case Generator</h3>
+                <p>Pulls ALL project context and generates comprehensive test plans for Voice features in Google Sheets.</p>
+                <span class="skillbook-tag">GENERATION</span>
+            </div>
+            <div class="skillbook-card">
+                <h3>QA Bug Reproduction</h3>
+                <p>End-to-end bug repro: fetches details, provisions test accounts, attempts reproduction, generates structured reports.</p>
+                <span class="skillbook-tag">EXECUTION</span>
+            </div>
+            <div class="skillbook-card">
+                <h3>Daily Brief System</h3>
+                <p>Personalized daily briefing covering calendar, tasks, diffs, GChat, posts, thanks, and AI meeting notes.</p>
+                <span class="skillbook-tag">OPERATIONS</span>
+            </div>
+            <div class="skillbook-card">
+                <h3>GenAI QA Compliance Fixer</h3>
+                <p>Analyzes non-compliant bugs, infers missing tags using LLM analysis, auto-adds high-confidence tags.</p>
+                <span class="skillbook-tag">AI-NATIVE</span>
+            </div>
+            <div class="skillbook-card">
+                <h3>Writing Style Clone</h3>
+                <p>Exhaustively analyzed 1.3M characters across 1,001 items to create a personal ghostwriting system.</p>
+                <span class="skillbook-tag">PERSONAL AI</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPERATIONAL SYSTEMS -->
+    <section class="section">
+        <div class="section-title">Operational Systems Built from Zero</div>
+        <div style="overflow-x:auto;">
+            <table class="systems-table">
+                <thead>
+                    <tr>
+                        <th>System</th>
+                        <th>Scope</th>
+                        <th>Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>RTAI Test Set Tracker</strong></td><td>AI-agent enabled, daily 5PM auto-monitoring</td><td>9+ columns auto-filled from MTT API</td></tr>
+                    <tr><td><strong>Release Cycle Reference</strong></td><td>Hierarchical Master → Platform → Detail</td><td>7+ surfaces coordinated</td></tr>
+                    <tr><td><strong>Bug Compliance Dashboard</strong></td><td>Cross-pillar tag compliance tracking</td><td>5 pillars, 4 compliance categories</td></tr>
+                    <tr><td><strong>i18n Test Framework</strong></td><td>26 languages across multiple surfaces</td><td>FB/IG/MSGR/WA/C50/Hatch/WWW</td></tr>
+                    <tr><td><strong>SEV Prevention Framework</strong></td><td>Proactive failure detection across 6 areas</td><td>Zero-to-one infrastructure</td></tr>
+                    <tr><td><strong>Offshore Coordination System</strong></td><td>TechM team task routing & tracking</td><td>9+ person team enabled</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="quote-section">
+        <p class="quote-text">"He doesn't solve problems — he builds systems that prevent problems from recurring. Every artifact he creates is part of a larger interconnected whole."</p>
+        <p class="quote-attr">From Deep Profile Analysis • May 2026</p>
+    </section>
+
+    <!-- VISION -->
+    <section class="section">
+        <div class="section-title">Current Direction</div>
+        <ul class="principles-list">
+            <li><strong>Applied AI for QA</strong><p>Replace ALL manual/non-AI QA infrastructure with AI-based equivalents. Measure: % of processes automated, time savings per sprint.</p></li>
+            <li><strong>10x-QA Platform Evolution</strong><p>Mature individual skillbooks into a cohesive platform covering the full QA lifecycle — beyond personal tools into team infrastructure.</p></li>
+            <li><strong>AI Native QA System</strong><p>A 39K-character proposal for a fundamentally new approach to quality assurance powered by AI agents end-to-end.</p></li>
+        </ul>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="mailto:hrprasad@meta.com">hrprasad@meta.com</a>
+            <a href="https://www.internalfb.com/careers/profile/100000569375965">Meta Profile</a>
+        </div>
+        <p>© 2026 Haree Akkala · Built with AI</p>
+    </footer>
+</div>
+
+</body>
+</html>
