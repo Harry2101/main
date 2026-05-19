@@ -9,10 +9,6 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
         
-        :root {
-            --accent: #6366f1;
-        }
-        
         body {
             font-family: 'Inter', system_ui, sans-serif;
         }
@@ -29,18 +25,6 @@
         .service-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-        }
-
-        .section-header {
-            font-size: 2.25rem;
-            line-height: 2.5rem;
-            font-weight: 700;
-            letter-spacing: -0.025em;
-        }
-
-        .nav-active {
-            color: #6366f1;
-            font-weight: 600;
         }
     </style>
 </head>
@@ -64,7 +48,6 @@
                     <div class="hidden md:flex items-center gap-x-8 text-sm">
                         <a href="#services" class="hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">Services</a>
                         <a href="#how" class="hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">How it works</a>
-                        <a href="#examples" class="hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">Examples</a>
                     </div>
 
                     <!-- Theme Toggle -->
@@ -120,7 +103,7 @@
         <div class="flex items-end justify-between mb-10">
             <div>
                 <div class="text-sm font-mono tracking-[3px] text-indigo-600 dark:text-indigo-400 mb-3">WHAT WE DO</div>
-                <h2 class="section-header tracking-tighter">Services that move the needle</h2>
+                <h2 class="text-4xl font-semibold tracking-tighter">Services that move the needle</h2>
             </div>
         </div>
 
@@ -132,13 +115,6 @@
                 </div>
                 <h3 class="text-2xl font-semibold tracking-tight mb-3">Website Building</h3>
                 <p class="text-zinc-600 dark:text-zinc-400">Beautiful, conversion-focused websites with booking, payments, and everything your business needs to run online.</p>
-                
-                <div class="mt-8 pt-6 border-t border-zinc-100 dark:border-zinc-800 text-sm">
-                    <div class="flex items-center gap-x-2 text-emerald-600 dark:text-emerald-400">
-                        <i class="fa-solid fa-check"></i>
-                        <span>Booking &amp; scheduling systems</span>
-                    </div>
-                </div>
             </div>
 
             <!-- Service 2 -->
@@ -165,7 +141,7 @@
     <div id="how" class="max-w-screen-xl mx-auto px-6 py-16 border-t border-zinc-200 dark:border-zinc-800">
         <div class="max-w-2xl">
             <div class="text-sm font-mono tracking-[3px] text-indigo-600 dark:text-indigo-400 mb-3">HOW IT WORKS</div>
-            <h2 class="section-header tracking-tighter mb-10">Simple. Fast. Effective.</h2>
+            <h2 class="text-4xl font-semibold tracking-tighter mb-10">Simple. Fast. Effective.</h2>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
@@ -211,11 +187,13 @@
     </footer>
 
     <script>
-        // Tailwind script
+        // Initialize Tailwind with proper dark mode support
         function initializeTailwind() {
-            document.documentElement.style.setProperty('--accent', '#6366f1');
+            tailwind.config = {
+                darkMode: 'class'
+            };
         }
-        
+
         // Theme toggle
         const themeToggle = document.getElementById('themeToggle');
         
@@ -229,18 +207,27 @@
             }
         }
         
-        // Initialize theme
-        if (localStorage.getItem('theme') === 'dark' || 
-            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            setTheme(true);
+        function init() {
+            initializeTailwind();
+
+            // Set initial theme
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                setTheme(true);
+            } else {
+                setTheme(false);
+            }
+
+            // Toggle button
+            themeToggle.addEventListener('click', () => {
+                const isCurrentlyDark = document.documentElement.classList.contains('dark');
+                setTheme(!isCurrentlyDark);
+            });
         }
-        
-        themeToggle.addEventListener('click', () => {
-            const isDark = document.documentElement.classList.contains('dark');
-            setTheme(!isDark);
-        });
-        
-        initializeTailwind();
+
+        window.onload = init;
     </script>
 </body>
 </html>
