@@ -9,24 +9,25 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
     :root {
       --accent: #7c3aed;
     }
     .dark {
       --accent: #a78bfa;
     }
+    
     .tail-container * {
       font-family: 'Inter', system_ui, sans-serif;
     }
+    
     .hero-bg {
       background: linear-gradient(135deg, #f8f4ff 0%, #f1e8ff 100%);
     }
     .dark .hero-bg {
       background: linear-gradient(135deg, #1e1b2e 0%, #2e1f4d 100%);
     }
-    .section-transition {
-      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+    
     .apple-card {
       transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
                   box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -37,9 +38,6 @@
     }
     .dark .apple-card:hover {
       box-shadow: 0 25px 50px -12px rgb(167 139 250 / 0.25);
-    }
-    .flow-line {
-      animation: flow 8s linear infinite;
     }
   </style>
 </head>
@@ -70,24 +68,27 @@
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO (image removed for clean Apple flow) -->
   <section class="hero-bg pt-24 pb-20 md:pt-32 md:pb-28">
-    <div class="max-w-screen-2xl mx-auto px-8 grid md:grid-cols-2 gap-12 items-center">
-      <div class="space-y-8">
-        <div class="inline-flex items-center gap-x-2 bg-white dark:bg-slate-900 rounded-3xl px-5 py-2 text-sm font-medium border border-slate-200 dark:border-slate-700">
+    <div class="max-w-screen-2xl mx-auto px-8">
+      <div class="max-w-2xl mx-auto text-center md:text-left">
+        <div class="inline-flex items-center gap-x-2 bg-white dark:bg-slate-900 rounded-3xl px-5 py-2 text-sm font-medium border border-slate-200 dark:border-slate-700 mb-8">
           <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
           Now shipping at Meta-scale reliability
         </div>
+        
         <h1 class="text-6xl md:text-7xl font-semibold tracking-tighter leading-none">
           Reliable systems.<br>
           Real operational leverage.
         </h1>
-        <p class="text-xl text-slate-600 dark:text-slate-400 max-w-lg">
+        
+        <p class="text-xl text-slate-600 dark:text-slate-400 mt-8 max-w-lg mx-auto md:mx-0">
           Production-grade AI automation and intelligent workflows. 
           Built by an engineer who shipped at Meta and Google. 
           Delivered with full ownership — you keep the code, the templates, the systems.
         </p>
-        <div class="flex flex-wrap gap-4">
+        
+        <div class="flex flex-wrap gap-4 justify-center md:justify-start mt-10">
           <a href="#solutions" 
              class="px-8 py-4 bg-violet-600 hover:bg-violet-700 dark:bg-violet-500 dark:hover:bg-violet-600 text-white rounded-3xl font-medium flex items-center gap-x-3 transition-all">
             Explore solutions
@@ -98,18 +99,13 @@
             View on GitHub
           </a>
         </div>
-        <div class="flex items-center gap-x-8 text-sm">
+        
+        <div class="flex items-center gap-x-8 justify-center md:justify-start text-sm mt-12">
           <div class="flex -space-x-4">
             <div class="w-6 h-6 bg-violet-200 dark:bg-violet-900 rounded-2xl ring-2 ring-white dark:ring-slate-900 flex items-center justify-center text-xs">M</div>
             <div class="w-6 h-6 bg-slate-200 dark:bg-slate-700 rounded-2xl ring-2 ring-white dark:ring-slate-900 flex items-center justify-center text-xs">G</div>
           </div>
           <p class="text-slate-500 dark:text-slate-400">Trusted by operators at Meta, Google, and scaling startups</p>
-        </div>
-      </div>
-      <div class="relative hidden md:block">
-        <div class="absolute -inset-4 bg-gradient-to-br from-violet-400/20 to-transparent rounded-[4rem] blur-3xl"></div>
-        <div class="relative bg-white dark:bg-slate-900 rounded-3xl shadow-2xl p-2">
-          <img src="https://picsum.photos/id/1015/800/600" alt="Akkala AI dashboard" class="rounded-3xl">
         </div>
       </div>
     </div>
@@ -168,7 +164,7 @@
   <!-- HOW IT WORKS -->
   <section id="how" class="bg-slate-50 dark:bg-slate-950 py-20">
     <div class="max-w-screen-2xl mx-auto px-8">
-      <h2 class="text-5xl font-semibold tracking-tight text-center">Built like Apple. Delivered like an operator.</h2>
+      <h2 class="text-5xl font-semibold tracking-tighter text-center">Built like Apple. Delivered like an operator.</h2>
       <div class="grid md:grid-cols-4 gap-8 mt-16">
         <div class="text-center">
           <div class="mx-auto w-12 h-12 bg-violet-100 dark:bg-violet-900 rounded-2xl flex items-center justify-center text-2xl mb-6">1</div>
@@ -198,7 +194,7 @@
   <section id="about" class="max-w-screen-2xl mx-auto px-8 py-20">
     <div class="flex flex-col md:flex-row gap-16 items-center">
       <div class="md:w-1/2">
-        <h2 class="text-5xl font-semibold tracking-tight">From Meta-scale automation to your systems.</h2>
+        <h2 class="text-5xl font-semibold tracking-tighter">From Meta-scale automation to your systems.</h2>
         <p class="mt-8 text-lg text-slate-600 dark:text-slate-400">
           5+ years architecting AI quality systems, agentic workflows, and persistent automation platforms at Meta, Google, and Yahoo. 
           I don’t sell templates — I ship infrastructure that actually works at scale.
@@ -226,6 +222,11 @@
   </footer>
 
   <script>
+    // Tailwind CDN dark mode initialization (this was missing)
+    tailwind.config = {
+      darkMode: 'class',
+    }
+
     function toggleTheme() {
       document.documentElement.classList.toggle('dark')
       const icon = document.getElementById('theme-icon')
@@ -234,17 +235,17 @@
       } else {
         icon.classList.replace('fa-sun', 'fa-moon')
       }
-      // Persist choice
       localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
     }
 
-    // Load saved theme
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    // Load saved theme or respect system preference
+    if (localStorage.theme === 'dark' || 
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark')
       document.getElementById('theme-icon').classList.replace('fa-moon', 'fa-sun')
     }
 
-    // Subtle scroll fade-in
+    // Subtle scroll fade-in (optional polish)
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.style.opacity = 1
