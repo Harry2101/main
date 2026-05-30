@@ -1,354 +1,260 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="sakura">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akkala AI • Practical Systems for Your Business</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
-        
-        :root {
-            --bg: #fffaf5;
-            --text: #3f2a2a;
-            --accent: #f8c4d8;
-            --accent-dark: #e89ab8;
-            --card: #fff;
-            --border: #f5d9e8;
-            --muted: #8c6b6b;
-        }
-        [data-theme="dark"] {
-            --bg: #0a0a0a;
-            --text: #e5e5e5;
-            --accent: #9f4a6f;
-            --accent-dark: #c36b8f;
-            --card: #111;
-            --border: #2a2a2a;
-            --muted: #888;
-        }
-        
-        body {
-            font-family: 'Inter', system_ui, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            transition: background 0.4s ease, color 0.4s ease;
-        }
-        .font-display { font-family: 'Space Grotesk', sans-serif; }
-        
-        .sakura-petals {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 1; overflow: hidden;
-            opacity: 0.65;
-        }
-        .petal {
-            position: absolute;
-            width: 12px; height: 12px;
-            background: #f8c4d8;
-            border-radius: 50% 0 50% 50%;
-            animation: fall linear infinite;
-            opacity: 0.75;
-            box-shadow: 0 0 6px #f8c4d8;
-        }
-        @keyframes fall {
-            to { transform: translateY(100vh) rotate(720deg); }
-        }
-        
-        .section-header {
-            font-size: 2.1rem;
-            line-height: 2.4rem;
-            font-weight: 600;
-            letter-spacing: -0.025em;
-        }
-        .package-card {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            background: var(--card);
-            border: 1px solid var(--border);
-        }
-        .package-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-        }
-        
-        .nav-link { color: var(--text); }
-        .nav-link:hover { color: var(--accent-dark); }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Akkala AI — Production-grade automation and intelligent systems. Built for operators who demand reliability at scale.">
+  <title>Akkala AI • Reliable Systems. Real Leverage.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    :root {
+      --accent: #7c3aed;
+    }
+    .dark {
+      --accent: #a78bfa;
+    }
+    .tail-container * {
+      font-family: 'Inter', system_ui, sans-serif;
+    }
+    .hero-bg {
+      background: linear-gradient(135deg, #f8f4ff 0%, #f1e8ff 100%);
+    }
+    .dark .hero-bg {
+      background: linear-gradient(135deg, #1e1b2e 0%, #2e1f4d 100%);
+    }
+    .section-transition {
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .apple-card {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .apple-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 25px 50px -12px rgb(124 58 237 / 0.15);
+    }
+    .dark .apple-card:hover {
+      box-shadow: 0 25px 50px -12px rgb(167 139 250 / 0.25);
+    }
+    .flow-line {
+      animation: flow 8s linear infinite;
+    }
+  </style>
 </head>
-<body class="min-h-screen">
-
-    <!-- Sakura Petals -->
-    <div id="petals" class="sakura-petals"></div>
-
-    <!-- Navbar -->
-    <nav class="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--bg)]/95 backdrop-blur-lg">
-        <div class="max-w-screen-xl mx-auto px-6">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex items-center gap-x-3">
-                    <div class="w-9 h-9 bg-[var(--accent)] rounded-2xl flex items-center justify-center">
-                        <span class="text-[#3f2a2a] font-semibold text-2xl tracking-tighter">A</span>
-                    </div>
-                    <span class="font-semibold text-2xl tracking-tighter font-display">Akkala AI</span>
-                </div>
-                
-                <div class="hidden md:flex items-center gap-x-8 text-sm">
-                    <a href="#packages" class="nav-link hover:text-[var(--accent-dark)] transition-colors">Packages</a>
-                    <a href="#how" class="nav-link hover:text-[var(--accent-dark)] transition-colors">How it works</a>
-                    <a href="#whatyouget" class="nav-link hover:text-[var(--accent-dark)] transition-colors">What you get</a>
-                </div>
-                
-                <div class="flex items-center gap-x-4">
-                    <!-- Theme Toggle -->
-                    <button id="theme-toggle" class="w-10 h-10 flex items-center justify-center text-2xl hover:bg-[var(--border)] rounded-2xl transition-all active:scale-90">
-                        🌸
-                    </button>
-                    
-                    <a href="mailto:hareeakkala@gmail.com"
-                       class="px-5 py-2.5 text-sm font-medium border border-[var(--border)] hover:bg-[var(--border)] transition-colors rounded-3xl">
-                        Book a call
-                    </a>
-                    <a href="#packages"
-                       class="px-6 py-2.5 text-sm font-semibold bg-[var(--accent)] text-[#3f2a2a] hover:bg-[var(--accent-dark)] transition-colors rounded-3xl">
-                        See packages
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero -->
-    <div class="max-w-screen-xl mx-auto px-6 pt-16 pb-14">
-        <div class="max-w-3xl">
-            <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-3xl bg-[var(--card)] border border-[var(--border)] text-sm mb-6">
-                <div class="w-2 h-2 bg-emerald-400 rounded-full"></div>
-                <span>Now helping small businesses & founders</span>
-            </div>
-           
-            <h1 class="text-6xl md:text-7xl font-semibold tracking-tighter leading-none mb-6 text-[var(--text)]">
-                Practical systems<br>that make running<br>your business easier.
-            </h1>
-           
-            <p class="text-2xl text-[var(--muted)] max-w-2xl mb-10">
-                We help small business owners, side gigs, and new founders set up clean websites, automate the boring stuff, and build simple systems that actually work — without the overwhelm.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4">
-                <a href="#packages"
-                   class="inline-flex items-center justify-center px-8 h-14 bg-[var(--accent)] text-[#3f2a2a] font-semibold rounded-3xl text-lg hover:bg-[var(--accent-dark)] transition-all">
-                    View packages
-                </a>
-                <a href="mailto:hareeakkala@gmail.com"
-                   class="inline-flex items-center justify-center px-8 h-14 border border-[var(--border)] hover:bg-[var(--border)] font-medium rounded-3xl text-lg transition-all">
-                    Book a free call
-                </a>
-            </div>
-           
-            <p class="mt-6 text-sm text-[var(--muted)]">Friendly support • Clear timelines • You keep everything</p>
-        </div>
-    </div>
-
-    <!-- Packages -->
-    <div id="packages" class="max-w-screen-xl mx-auto px-6 py-16 border-t border-[var(--border)]">
-        <div class="max-w-2xl mb-10">
-            <h2 class="section-header tracking-tighter text-[var(--text)]">Simple packages.<br>Real results.</h2>
-            <p class="text-xl text-[var(--muted)] mt-3">Choose what fits your business. Every package includes templates you own.</p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-6">
-            <!-- Package 1 -->
-            <div class="package-card rounded-3xl p-8 flex flex-col">
-                <div class="mb-6">
-                    <div class="text-emerald-400 text-sm font-medium tracking-wider">MOST POPULAR</div>
-                    <h3 class="text-2xl font-semibold mt-1">Business Setup Core</h3>
-                    <p class="text-[var(--muted)] mt-2">Perfect for new founders and side gigs getting started.</p>
-                </div>
-                <div class="mb-6">
-                    <div class="text-4xl font-semibold">$4,900</div>
-                    <div class="text-sm text-[var(--muted)]">3–4 week project</div>
-                </div>
-                <ul class="space-y-3 text-sm flex-1 mb-8">
-                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> Professional website with booking & payments</li>
-                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> Core automation backbone</li>
-                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> Simple dashboards & trackers</li>
-                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> Full templates + documentation you keep</li>
-                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> Training & handover</li>
-                </ul>
-                <a href="mailto:hareeakkala@gmail.com?subject=Business%20Setup%20Core"
-                   class="mt-auto block text-center py-3.5 bg-[var(--accent)] text-[#3f2a2a] font-semibold rounded-3xl hover:bg-[var(--accent-dark)] transition-colors">
-                    Get started
-                </a>
-            </div>
-            
-            <!-- Package 2 -->
-            <div class="package-card rounded-3xl p-8 flex flex-col">
-                <div class="mb-6">
-                    <h3 class="text-2xl font-semibold">Operations Automation Sprint</h3>
-                    <p class="text-[var(--muted)] mt-2">For businesses tired of manual busywork.</p>
-                </div>
-                <div class="mb-6">
-                    <div class="text-4xl font-semibold">$3,900</div>
-                    <div class="text-sm text-[var(--muted)]">3 week project</div>
-                </div>
-                <ul class="space-y-3 text-sm flex-1 mb-8">
-                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> Workflow audit</li>
-                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> 5–8 high-impact automations built</li>
-                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> Live dashboards & trackers</li>
-                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> Full templates + documentation</li>
-                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> 2 weeks of support after launch</li>
-                </ul>
-                <a href="mailto:hareeakkala@gmail.com?subject=Operations%20Automation%20Sprint"
-                   class="mt-auto block text-center py-3.5 border border-[var(--border)] font-semibold rounded-3xl hover:bg-[var(--border)] transition-colors">
-                    Get started
-                </a>
-            </div>
-            
-            <!-- Package 3 -->
-            <div class="package-card rounded-3xl p-8 flex flex-col">
-                <div class="mb-6">
-                    <h3 class="text-2xl font-semibold">Full Business Operating System</h3>
-                    <p class="text-[var(--muted)] mt-2">Everything you need in one complete setup.</p>
-                </div>
-                <div class="mb-6">
-                    <div class="text-4xl font-semibold">$9,500</div>
-                    <div class="text-sm text-[var(--muted)]">5–6 week project</div>
-                </div>
-                <ul class="space-y-3 text-sm flex-1 mb-8">
-                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> Full website + booking system</li>
-                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> Complete automation backbone</li>
-                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> Custom dashboards & reporting</li>
-                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> All templates + detailed runbooks</li>
-                    <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> Strong documentation & training</li>
-                </ul>
-                <a href="mailto:hareeakkala@gmail.com?subject=Full%20Business%20Operating%20System"
-                   class="mt-auto block text-center py-3.5 bg-[var(--accent)] text-[#3f2a2a] font-semibold rounded-3xl hover:bg-[var(--accent-dark)] transition-colors">
-                    Get started
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- How it works -->
-    <div id="how" class="max-w-screen-xl mx-auto px-6 py-16 border-t border-[var(--border)]">
-        <div class="max-w-2xl mb-10">
-            <h2 class="section-header tracking-tighter text-[var(--text)]">How it works</h2>
-            <p class="text-xl text-[var(--muted)] mt-2">Simple, clear, and friendly from start to finish.</p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div>
-                <div class="text-emerald-400 font-mono text-sm tracking-[2px] mb-2">01</div>
-                <h4 class="font-semibold text-xl mb-2">Discovery Call</h4>
-                <p class="text-[var(--muted)]">We chat about your business, what’s working, and what feels messy. No pressure.</p>
-            </div>
-            <div>
-                <div class="text-emerald-400 font-mono text-sm tracking-[2px] mb-2">02</div>
-                <h4 class="font-semibold text-xl mb-2">We Build It Together</h4>
-                <p class="text-[var(--muted)]">I set everything up — website, automations, dashboards — and keep you updated along the way.</p>
-            </div>
-            <div>
-                <div class="text-emerald-400 font-mono text-sm tracking-[2px] mb-2">03</div>
-                <h4 class="font-semibold text-xl mb-2">You Take Over</h4>
-                <p class="text-[var(--muted)]">You get full training, all the templates, and documentation so everything runs smoothly without me.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- What You Get -->
-    <div id="whatyouget" class="max-w-screen-xl mx-auto px-6 py-16 border-t border-[var(--border)] bg-[var(--card)]/40">
-        <div class="max-w-2xl">
-            <h2 class="section-header tracking-tighter mb-4 text-[var(--text)]">What you actually walk away with</h2>
-            <div class="grid md:grid-cols-2 gap-x-10 gap-y-6 text-lg">
-                <div class="flex gap-4">
-                    <i class="fa-solid fa-check-circle text-emerald-400 text-2xl mt-1"></i>
-                    <div>Working systems that reduce daily busywork</div>
-                </div>
-                <div class="flex gap-4">
-                    <i class="fa-solid fa-check-circle text-emerald-400 text-2xl mt-1"></i>
-                    <div>All templates and documentation — you own them forever</div>
-                </div>
-                <div class="flex gap-4">
-                    <i class="fa-solid fa-check-circle text-emerald-400 text-2xl mt-1"></i>
-                    <div>Clear training so you’re not dependent on me</div>
-                </div>
-                <div class="flex gap-4">
-                    <i class="fa-solid fa-check-circle text-emerald-400 text-2xl mt-1"></i>
-                    <div>Peace of mind knowing things are organized and running</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Final CTA -->
-    <div class="max-w-screen-xl mx-auto px-6 py-20 border-t border-[var(--border)] text-center">
-        <h2 class="text-5xl font-semibold tracking-tighter mb-4 text-[var(--text)]">Ready to make things easier?</h2>
-        <p class="text-xl text-[var(--muted)] mb-8 max-w-md mx-auto">Let’s talk about your business and find the right fit.</p>
-       
-        <a href="mailto:hareeakkala@gmail.com"
-           class="inline-flex items-center justify-center px-10 h-14 bg-[var(--accent)] text-[#3f2a2a] font-semibold text-lg rounded-3xl hover:bg-[var(--accent-dark)] transition-all">
-            Book a free discovery call
+<body class="tail-container bg-white dark:bg-[#0f0c1f] text-slate-900 dark:text-slate-100 transition-colors duration-500">
+  <!-- NAV -->
+  <nav class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-[#0f0c1f]/80 backdrop-blur-lg fixed w-full z-50">
+    <div class="max-w-screen-2xl mx-auto px-8 py-5 flex items-center justify-between">
+      <div class="flex items-center gap-x-3">
+        <div class="w-8 h-8 bg-violet-600 dark:bg-violet-400 rounded-2xl flex items-center justify-center text-white dark:text-slate-950 font-bold text-xl">A</div>
+        <span class="text-2xl font-semibold tracking-tight">Akkala AI</span>
+      </div>
+      <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+        <a href="#solutions" class="hover:text-violet-600 dark:hover:text-violet-400 transition-colors">Solutions</a>
+        <a href="#how" class="hover:text-violet-600 dark:hover:text-violet-400 transition-colors">How it Works</a>
+        <a href="#about" class="hover:text-violet-600 dark:hover:text-violet-400 transition-colors">Background</a>
+      </div>
+      <div class="flex items-center gap-x-4">
+        <button onclick="toggleTheme()" 
+                class="w-10 h-10 flex items-center justify-center rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i id="theme-icon" class="fa-solid fa-moon text-xl"></i>
+        </button>
+        <a href="https://calendly.com/harry-akkala" target="_blank"
+           class="px-6 py-3 bg-violet-600 hover:bg-violet-700 dark:bg-violet-500 dark:hover:bg-violet-600 text-white rounded-3xl font-medium text-sm flex items-center gap-x-2 transition-all">
+          <span>Book a call</span>
+          <i class="fa-solid fa-arrow-right text-xs"></i>
         </a>
-        <p class="mt-4 text-sm text-[var(--muted)]">No hard sell. Just a friendly conversation.</p>
+      </div>
     </div>
+  </nav>
 
-    <!-- Footer -->
-    <footer class="border-t border-[var(--border)] py-8">
-        <div class="max-w-screen-xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-y-3 text-sm text-[var(--muted)]">
-            <div>© 2026 Akkala AI — Friendly systems for real businesses</div>
-            <div>
-                <a href="mailto:hareeakkala@gmail.com" class="hover:text-[var(--text)]">Contact</a>
-            </div>
+  <!-- HERO -->
+  <section class="hero-bg pt-24 pb-20 md:pt-32 md:pb-28">
+    <div class="max-w-screen-2xl mx-auto px-8 grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-8">
+        <div class="inline-flex items-center gap-x-2 bg-white dark:bg-slate-900 rounded-3xl px-5 py-2 text-sm font-medium border border-slate-200 dark:border-slate-700">
+          <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+          Now shipping at Meta-scale reliability
         </div>
-    </footer>
+        <h1 class="text-6xl md:text-7xl font-semibold tracking-tighter leading-none">
+          Reliable systems.<br>
+          Real operational leverage.
+        </h1>
+        <p class="text-xl text-slate-600 dark:text-slate-400 max-w-lg">
+          Production-grade AI automation and intelligent workflows. 
+          Built by an engineer who shipped at Meta and Google. 
+          Delivered with full ownership — you keep the code, the templates, the systems.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#solutions" 
+             class="px-8 py-4 bg-violet-600 hover:bg-violet-700 dark:bg-violet-500 dark:hover:bg-violet-600 text-white rounded-3xl font-medium flex items-center gap-x-3 transition-all">
+            Explore solutions
+            <i class="fa-solid fa-arrow-down text-sm"></i>
+          </a>
+          <a href="https://github.com/Harry2101" target="_blank"
+             class="px-8 py-4 border border-slate-300 dark:border-slate-700 hover:border-violet-300 rounded-3xl font-medium flex items-center gap-x-2 transition-all">
+            View on GitHub
+          </a>
+        </div>
+        <div class="flex items-center gap-x-8 text-sm">
+          <div class="flex -space-x-4">
+            <div class="w-6 h-6 bg-violet-200 dark:bg-violet-900 rounded-2xl ring-2 ring-white dark:ring-slate-900 flex items-center justify-center text-xs">M</div>
+            <div class="w-6 h-6 bg-slate-200 dark:bg-slate-700 rounded-2xl ring-2 ring-white dark:ring-slate-900 flex items-center justify-center text-xs">G</div>
+          </div>
+          <p class="text-slate-500 dark:text-slate-400">Trusted by operators at Meta, Google, and scaling startups</p>
+        </div>
+      </div>
+      <div class="relative hidden md:block">
+        <div class="absolute -inset-4 bg-gradient-to-br from-violet-400/20 to-transparent rounded-[4rem] blur-3xl"></div>
+        <div class="relative bg-white dark:bg-slate-900 rounded-3xl shadow-2xl p-2">
+          <img src="https://picsum.photos/id/1015/800/600" alt="Akkala AI dashboard" class="rounded-3xl">
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // Theme System
-        function setTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            
-            const toggle = document.getElementById('theme-toggle');
-            toggle.textContent = theme === 'sakura' ? '🌙' : '🌸';
-            
-            const petals = document.getElementById('petals');
-            petals.style.display = theme === 'sakura' ? 'block' : 'none';
-        }
+  <!-- SOLUTIONS / PACKAGES -->
+  <section id="solutions" class="max-w-screen-2xl mx-auto px-8 py-20">
+    <div class="text-center mb-16">
+      <span class="text-violet-600 dark:text-violet-400 font-medium">CHOOSE YOUR LEVERAGE</span>
+      <h2 class="text-5xl font-semibold tracking-tight mt-3">Systems that compound</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Package 1 -->
+      <div class="apple-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8">
+        <div class="text-emerald-600 dark:text-emerald-400 text-sm font-medium mb-4">MOST POPULAR</div>
+        <h3 class="text-2xl font-semibold">Business Systems Core</h3>
+        <div class="mt-2 text-5xl font-semibold">$3,900</div>
+        <p class="text-slate-500 dark:text-slate-400 mt-8">Complete operational backbone for growing operators.</p>
+        <ul class="mt-8 space-y-4 text-sm">
+          <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> Full workflow automation platform</li>
+          <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> Persistent state + escalation logic</li>
+          <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> Documentation + training included</li>
+        </ul>
+        <a href="#" class="mt-12 block w-full text-center py-4 border border-slate-300 dark:border-slate-700 hover:border-violet-300 rounded-3xl font-medium">Get started →</a>
+      </div>
 
-        // Toggle handler
-        document.getElementById('theme-toggle').addEventListener('click', () => {
-            const current = document.documentElement.getAttribute('data-theme');
-            setTheme(current === 'sakura' ? 'dark' : 'sakura');
-        });
+      <!-- Package 2 -->
+      <div class="apple-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 relative">
+        <div class="absolute -top-3 right-8 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 text-xs font-bold px-4 py-1 rounded-3xl">RECOMMENDED</div>
+        <h3 class="text-2xl font-semibold">Intelligent Automation Suite</h3>
+        <div class="mt-2 text-5xl font-semibold">$6,900</div>
+        <p class="text-slate-500 dark:text-slate-400 mt-8">Agentic AI workflows + multi-modal orchestration.</p>
+        <ul class="mt-8 space-y-4 text-sm">
+          <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> LLM orchestration + RAG pipelines</li>
+          <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> Tool-calling + memory systems</li>
+          <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> Real-time notification & escalation</li>
+        </ul>
+        <a href="#" class="mt-12 block w-full text-center py-4 border border-slate-300 dark:border-slate-700 hover:border-violet-300 rounded-3xl font-medium">Get started →</a>
+      </div>
 
-        // Load saved preference
-        const saved = localStorage.getItem('theme') || 'sakura';
-        setTheme(saved);
+      <!-- Package 3 -->
+      <div class="apple-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8">
+        <h3 class="text-2xl font-semibold">Enterprise AI Infrastructure</h3>
+        <div class="mt-2 text-5xl font-semibold">$9,500</div>
+        <p class="text-slate-500 dark:text-slate-400 mt-8">Meta-scale reliability for serious operators.</p>
+        <ul class="mt-8 space-y-4 text-sm">
+          <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> Distributed coordination & state</li>
+          <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> Qualitative evaluation frameworks</li>
+          <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> Full knowledge transfer + IP ownership</li>
+        </ul>
+        <a href="#" class="mt-12 block w-full text-center py-4 border border-slate-300 dark:border-slate-700 hover:border-violet-300 rounded-3xl font-medium">Get started →</a>
+      </div>
+    </div>
+  </section>
 
-        // Keyboard shortcut
-        document.addEventListener('keydown', e => {
-            if (e.key.toLowerCase() === 't' && document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "TEXTAREA") {
-                const current = document.documentElement.getAttribute('data-theme');
-                setTheme(current === 'sakura' ? 'dark' : 'sakura');
-            }
-        });
+  <!-- HOW IT WORKS -->
+  <section id="how" class="bg-slate-50 dark:bg-slate-950 py-20">
+    <div class="max-w-screen-2xl mx-auto px-8">
+      <h2 class="text-5xl font-semibold tracking-tight text-center">Built like Apple. Delivered like an operator.</h2>
+      <div class="grid md:grid-cols-4 gap-8 mt-16">
+        <div class="text-center">
+          <div class="mx-auto w-12 h-12 bg-violet-100 dark:bg-violet-900 rounded-2xl flex items-center justify-center text-2xl mb-6">1</div>
+          <h4 class="font-medium">Discovery Call</h4>
+          <p class="text-slate-500 dark:text-slate-400 mt-3">We map your exact leverage points in 30 minutes.</p>
+        </div>
+        <div class="text-center">
+          <div class="mx-auto w-12 h-12 bg-violet-100 dark:bg-violet-900 rounded-2xl flex items-center justify-center text-2xl mb-6">2</div>
+          <h4 class="font-medium">Build & Ship</h4>
+          <p class="text-slate-500 dark:text-slate-400 mt-3">Production-ready code in under 2 weeks.</p>
+        </div>
+        <div class="text-center">
+          <div class="mx-auto w-12 h-12 bg-violet-100 dark:bg-violet-900 rounded-2xl flex items-center justify-center text-2xl mb-6">3</div>
+          <h4 class="font-medium">Knowledge Transfer</h4>
+          <p class="text-slate-500 dark:text-slate-400 mt-3">Full docs, training, and you own everything.</p>
+        </div>
+        <div class="text-center">
+          <div class="mx-auto w-12 h-12 bg-violet-100 dark:bg-violet-900 rounded-2xl flex items-center justify-center text-2xl mb-6">4</div>
+          <h4 class="font-medium">Compound Forever</h4>
+          <p class="text-slate-500 dark:text-slate-400 mt-3">Your systems improve ROI every single month.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        // Sakura Petals
-        function createPetal() {
-            if (document.documentElement.getAttribute('data-theme') !== 'sakura') return;
-            
-            const petal = document.createElement('div');
-            petal.className = 'petal';
-            petal.style.left = Math.random() * 100 + 'vw';
-            petal.style.animationDuration = (Math.random() * 9 + 11) + 's';
-            petal.style.opacity = Math.random() * 0.5 + 0.5;
-            petal.style.width = petal.style.height = (Math.random() * 9 + 8) + 'px';
-            petal.style.background = '#f8c4d8';
-            document.getElementById('petals').appendChild(petal);
-            
-            setTimeout(() => petal.remove(), 25000);
-        }
-        
-        setInterval(createPetal, 160);
-        // Initial burst
-        for (let i = 0; i < 18; i++) {
-            setTimeout(createPetal, i * 70);
-        }
-    </script>
+  <!-- BACKGROUND -->
+  <section id="about" class="max-w-screen-2xl mx-auto px-8 py-20">
+    <div class="flex flex-col md:flex-row gap-16 items-center">
+      <div class="md:w-1/2">
+        <h2 class="text-5xl font-semibold tracking-tight">From Meta-scale automation to your systems.</h2>
+        <p class="mt-8 text-lg text-slate-600 dark:text-slate-400">
+          5+ years architecting AI quality systems, agentic workflows, and persistent automation platforms at Meta, Google, and Yahoo. 
+          I don’t sell templates — I ship infrastructure that actually works at scale.
+        </p>
+        <a href="/resume.pdf" class="inline-flex items-center gap-x-3 mt-10 text-violet-600 dark:text-violet-400 font-medium">
+          Download full background <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+      <div class="md:w-1/2 text-sm leading-relaxed text-slate-600 dark:text-slate-400 space-y-6">
+        <p>• Architected AI validation frameworks supporting 10+ production AI products</p>
+        <p>• Built persistent orchestration systems with LLM memory, tool-calling, and intelligent escalation</p>
+        <p>• Reduced operational overhead through event-driven, stateful automation</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER / CTA -->
+  <footer class="bg-slate-900 text-slate-400 py-16">
+    <div class="max-w-screen-2xl mx-auto px-8 text-center">
+      <p class="text-xl text-white">Ready to build systems that actually compound?</p>
+      <a href="https://calendly.com/harry-akkala" target="_blank"
+         class="mt-8 inline-block px-10 py-5 bg-white text-slate-900 rounded-3xl font-semibold">Schedule a 30-minute strategy call</a>
+      <p class="mt-16 text-xs">© Haree Akkala • Akkala AI • Full ownership. Zero subscriptions. Real leverage.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      document.documentElement.classList.toggle('dark')
+      const icon = document.getElementById('theme-icon')
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.replace('fa-moon', 'fa-sun')
+      } else {
+        icon.classList.replace('fa-sun', 'fa-moon')
+      }
+      // Persist choice
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+    }
+
+    // Load saved theme
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark')
+      document.getElementById('theme-icon').classList.replace('fa-moon', 'fa-sun')
+    }
+
+    // Subtle scroll fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.style.opacity = 1
+      })
+    }, { threshold: 0.1 })
+    document.querySelectorAll('.apple-card, section').forEach(el => {
+      el.style.opacity = 0
+      el.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
+      observer.observe(el)
+    })
+  </script>
 </body>
 </html>
