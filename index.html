@@ -55,9 +55,19 @@
         <a href="#about" class="hover:text-violet-600 dark:hover:text-violet-400 transition-colors">Background</a>
       </div>
       <div class="flex items-center gap-x-4">
+        <!-- Robust inline SVG theme toggle - no more broken icons -->
         <button onclick="toggleTheme()" 
                 class="w-10 h-10 flex items-center justify-center rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
-          <i id="theme-icon" class="fa-solid fa-moon text-xl"></i>
+          <div id="theme-icon" class="w-6 h-6">
+            <!-- Moon (light mode default) -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-slate-700 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+            <!-- Sun (dark mode) -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-slate-700 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </div>
         </button>
         <a href="https://calendly.com/harry-akkala" target="_blank"
            class="px-6 py-3 bg-violet-600 hover:bg-violet-700 dark:bg-violet-500 dark:hover:bg-violet-600 text-white rounded-3xl font-medium text-sm flex items-center gap-x-2 transition-all">
@@ -68,7 +78,7 @@
     </div>
   </nav>
 
-  <!-- HERO (image removed for clean Apple flow) -->
+  <!-- HERO -->
   <section class="hero-bg pt-24 pb-20 md:pt-32 md:pb-28">
     <div class="max-w-screen-2xl mx-auto px-8">
       <div class="max-w-2xl mx-auto text-center md:text-left">
@@ -83,7 +93,7 @@
         </h1>
         
         <p class="text-xl text-slate-600 dark:text-slate-400 mt-8 max-w-lg mx-auto md:mx-0">
-          Production-grade AI automation and intelligent workflows. 
+          Production-grade automation and intelligent workflows. 
           Built by an engineer who shipped at Meta and Google. 
           Delivered with full ownership — you keep the code, the templates, the systems.
         </p>
@@ -129,21 +139,21 @@
           <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> Persistent state + escalation logic</li>
           <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> Documentation + training included</li>
         </ul>
-        <a href="#" class="mt-12 block w-full text-center py-4 border border-slate-300 dark:border-slate-700 hover:border-violet-300 rounded-3xl font-medium">Get started →</a>
+        <a href="https://calendly.com/harry-akkala" target="_blank" class="mt-12 block w-full text-center py-4 border border-slate-300 dark:border-slate-700 hover:border-violet-300 rounded-3xl font-medium">Get started →</a>
       </div>
 
       <!-- Package 2 -->
       <div class="apple-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 relative">
         <div class="absolute -top-3 right-8 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 text-xs font-bold px-4 py-1 rounded-3xl">RECOMMENDED</div>
-        <h3 class="text-2xl font-semibold">Intelligent Automation Suite</h3>
+        <h3 class="text-2xl font-semibold">Smart Automation Suite</h3>
         <div class="mt-2 text-5xl font-semibold">$6,900</div>
-        <p class="text-slate-500 dark:text-slate-400 mt-8">Agentic AI workflows + multi-modal orchestration.</p>
+        <p class="text-slate-500 dark:text-slate-400 mt-8">Intelligent workflows that automate complex operations.</p>
         <ul class="mt-8 space-y-4 text-sm">
-          <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> LLM orchestration + RAG pipelines</li>
-          <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> Tool-calling + memory systems</li>
-          <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> Real-time notification & escalation</li>
+          <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> AI that remembers context and retrieves information</li>
+          <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> Smart decision-making and task handling</li>
+          <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> Real-time alerts and escalation</li>
         </ul>
-        <a href="#" class="mt-12 block w-full text-center py-4 border border-slate-300 dark:border-slate-700 hover:border-violet-300 rounded-3xl font-medium">Get started →</a>
+        <a href="https://calendly.com/harry-akkala" target="_blank" class="mt-12 block w-full text-center py-4 border border-slate-300 dark:border-slate-700 hover:border-violet-300 rounded-3xl font-medium">Get started →</a>
       </div>
 
       <!-- Package 3 -->
@@ -152,11 +162,11 @@
         <div class="mt-2 text-5xl font-semibold">$9,500</div>
         <p class="text-slate-500 dark:text-slate-400 mt-8">Meta-scale reliability for serious operators.</p>
         <ul class="mt-8 space-y-4 text-sm">
-          <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> Distributed coordination & state</li>
-          <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> Qualitative evaluation frameworks</li>
-          <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> Full knowledge transfer + IP ownership</li>
+          <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> Distributed coordination & state management</li>
+          <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> Evaluation frameworks that actually work</li>
+          <li class="flex gap-x-3"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> Full knowledge transfer + you own everything</li>
         </ul>
-        <a href="#" class="mt-12 block w-full text-center py-4 border border-slate-300 dark:border-slate-700 hover:border-violet-300 rounded-3xl font-medium">Get started →</a>
+        <a href="https://calendly.com/harry-akkala" target="_blank" class="mt-12 block w-full text-center py-4 border border-slate-300 dark:border-slate-700 hover:border-violet-300 rounded-3xl font-medium">Get started →</a>
       </div>
     </div>
   </section>
@@ -164,7 +174,7 @@
   <!-- HOW IT WORKS -->
   <section id="how" class="bg-slate-50 dark:bg-slate-950 py-20">
     <div class="max-w-screen-2xl mx-auto px-8">
-      <h2 class="text-5xl font-semibold tracking-tighter text-center">Built like Apple. Delivered like an operator.</h2>
+      <h2 class="text-5xl font-semibold tracking-tighter text-center">Straightforward process. Real results.</h2>
       <div class="grid md:grid-cols-4 gap-8 mt-16">
         <div class="text-center">
           <div class="mx-auto w-12 h-12 bg-violet-100 dark:bg-violet-900 rounded-2xl flex items-center justify-center text-2xl mb-6">1</div>
@@ -196,7 +206,7 @@
       <div class="md:w-1/2">
         <h2 class="text-5xl font-semibold tracking-tighter">From Meta-scale automation to your systems.</h2>
         <p class="mt-8 text-lg text-slate-600 dark:text-slate-400">
-          5+ years architecting AI quality systems, agentic workflows, and persistent automation platforms at Meta, Google, and Yahoo. 
+          5+ years architecting AI quality systems, intelligent workflows, and persistent automation platforms at Meta, Google, and Yahoo. 
           I don’t sell templates — I ship infrastructure that actually works at scale.
         </p>
         <a href="/resume.pdf" class="inline-flex items-center gap-x-3 mt-10 text-violet-600 dark:text-violet-400 font-medium">
@@ -205,7 +215,7 @@
       </div>
       <div class="md:w-1/2 text-sm leading-relaxed text-slate-600 dark:text-slate-400 space-y-6">
         <p>• Architected AI validation frameworks supporting 10+ production AI products</p>
-        <p>• Built persistent orchestration systems with LLM memory, tool-calling, and intelligent escalation</p>
+        <p>• Built persistent orchestration systems with intelligent memory and escalation</p>
         <p>• Reduced operational overhead through event-driven, stateful automation</p>
       </div>
     </div>
@@ -222,19 +232,13 @@
   </footer>
 
   <script>
-    // Tailwind CDN dark mode initialization (this was missing)
+    // Tailwind CDN dark mode initialization
     tailwind.config = {
       darkMode: 'class',
     }
 
     function toggleTheme() {
       document.documentElement.classList.toggle('dark')
-      const icon = document.getElementById('theme-icon')
-      if (document.documentElement.classList.contains('dark')) {
-        icon.classList.replace('fa-moon', 'fa-sun')
-      } else {
-        icon.classList.replace('fa-sun', 'fa-moon')
-      }
       localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
     }
 
@@ -242,10 +246,9 @@
     if (localStorage.theme === 'dark' || 
         (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark')
-      document.getElementById('theme-icon').classList.replace('fa-moon', 'fa-sun')
     }
 
-    // Subtle scroll fade-in (optional polish)
+    // Subtle scroll fade-in
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.style.opacity = 1
